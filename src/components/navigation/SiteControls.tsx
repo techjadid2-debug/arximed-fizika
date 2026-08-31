@@ -19,14 +19,14 @@ export function LanguageSwitcher({ locale }: { locale: Locale }) {
   const pathname = usePathname();
 
   return (
-    <div className="hidden items-center rounded-full border border-border bg-card p-1 sm:flex">
+    <div className="hidden items-center rounded-md border border-border bg-card p-1 sm:flex">
       {locales.map((candidate) => (
         <Button
           key={candidate}
           asChild
           variant={candidate === locale ? "default" : "ghost"}
           size="sm"
-          className="h-8 rounded-full px-3 text-xs"
+          className="h-8 rounded-sm px-3 text-xs"
         >
           <Link href={replaceLocale(pathname, candidate)} title={localeLabels[candidate]}>
             {candidate.toUpperCase()}
@@ -46,7 +46,7 @@ export function ThemeToggle() {
       type="button"
       variant="outline"
       size="icon"
-      className="size-11 rounded-full"
+      className="size-11 rounded-md"
       aria-label={isDark ? "Light rejimga o‘tish" : "Dark rejimga o‘tish"}
       onClick={() => setTheme(isDark ? "light" : "dark")}
     >
@@ -59,7 +59,7 @@ export function MobileLanguageLink({ locale }: { locale: Locale }) {
   const pathname = usePathname();
   const nextLocale = locales[(locales.indexOf(locale) + 1) % locales.length] ?? defaultLocale;
   return (
-    <Button asChild variant="outline" size="sm" className="h-11 rounded-full px-3 sm:hidden">
+    <Button asChild variant="outline" size="sm" className="h-11 rounded-md px-3 sm:hidden">
       <Link href={replaceLocale(pathname, nextLocale)}>{nextLocale.toUpperCase()}</Link>
     </Button>
   );
