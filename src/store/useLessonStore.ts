@@ -21,6 +21,7 @@ export interface LessonProgress {
   inputs: Record<string, LessonInputValue>;
   quizAttempts: Record<string, QuizAttempt>;
   problemAttempts: Record<string, ProblemAttempt>;
+  completedActivityIds: string[];
   updatedAt: string;
 }
 
@@ -47,6 +48,7 @@ interface LessonStore {
     isCorrect: boolean,
   ) => void;
   completeStep: (lessonId: string, stepId: string) => void;
+  completeActivity: (lessonId: string, activityId: string) => void;
   resetLesson: (lessonId: string) => void;
 }
 
@@ -66,6 +68,7 @@ function createLessonProgress(): LessonProgress {
     inputs: {},
     quizAttempts: {},
     problemAttempts: {},
+    completedActivityIds: [],
     updatedAt: new Date().toISOString(),
   };
 }
@@ -216,6 +219,22 @@ export const useLessonStore = create<LessonStore>()(
                 ...progress,
                 completedStepIds: Array.from(
                   new Set([...progress.completedStepIds, stepId]),
+                ),
+                updatedAt: new Date().toISOString(),
+              },
+            },
+          };
+        }),
+      completeActivity: (lessonId, activityId) =>
+        set((state) => {
+          const progress = getProgress(state.progressByLesson, lessonId);
+          return {
+            progressByLesson: {
+              ...state.progressByLesson,
+              [lessonId]: {
+                ...progress,
+                completedActivityIds: Array.from(
+                  new Set([...progress.completedActivityIds, activityId]),
                 ),
                 updatedAt: new Date().toISOString(),
               },

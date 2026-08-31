@@ -28,6 +28,7 @@ const EMPTY_PROGRESS: LessonProgress = {
   inputs: {},
   quizAttempts: {},
   problemAttempts: {},
+  completedActivityIds: [],
   updatedAt: "",
 };
 

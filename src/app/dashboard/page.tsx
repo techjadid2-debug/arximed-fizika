@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { redirect } from "next/navigation";
 import Link from "next/link";
 import {
   ArrowLeft,
@@ -57,6 +58,7 @@ const tracks = [
 ];
 
 export default function DashboardPage() {
+  redirect("/uz/courses");
   return (
     <main className="min-h-dvh bg-black text-zinc-50">
       <header className="border-b border-zinc-900">
