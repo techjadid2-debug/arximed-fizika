@@ -221,6 +221,24 @@ export function PhysicsCanvas2D({ className }: PhysicsCanvas2DProps) {
   );
 }
 
+function getThemeColors() {
+  const isDark =
+    typeof document !== "undefined" &&
+    document.documentElement.classList.contains("dark");
+
+  return {
+    bg: isDark ? "#09090B" : "#FAFAFA",
+    grid: isDark ? "#27272A" : "#E4E4E7",
+    ground: isDark ? "#52525B" : "#A1A1AA",
+    text: isDark ? "#71717A" : "#71717A",
+    projectile: isDark ? "#FAFAFA" : "#18181B",
+    trail: isDark ? "#71717A" : "#A1A1AA",
+    velocity: isDark ? "#FAFAFA" : "#18181B",
+    gravity: isDark ? "#A1A1AA" : "#71717A",
+    shadow: isDark ? "rgba(250, 250, 250, 0.28)" : "rgba(24, 24, 27, 0.15)",
+  };
+}
+
 function drawScene(
   context: CanvasRenderingContext2D,
   viewport: Viewport,
@@ -231,6 +249,7 @@ function drawScene(
 ) {
   const { width, height } = viewport;
   const camera = getCamera(width, height, config);
+  const colors = getThemeColors();
   const renderPosition = {
     x:
       state.previousPosition.x +
@@ -241,19 +260,19 @@ function drawScene(
   };
 
   context.clearRect(0, 0, width, height);
-  context.fillStyle = "#09090B";
+  context.fillStyle = colors.bg;
   context.fillRect(0, 0, width, height);
 
-  drawGrid(context, viewport, camera, config);
-  drawTrail(context, camera, trail);
-  drawProjectile(context, camera, renderPosition);
+  drawGrid(context, viewport, camera, config, colors);
+  drawTrail(context, camera, trail, colors);
+  drawProjectile(context, camera, renderPosition, colors);
   drawVector(
     context,
     camera,
     renderPosition,
     state.velocity,
     2.4,
-    "#FAFAFA",
+    colors.velocity,
     "v",
   );
   drawVector(
@@ -262,7 +281,7 @@ function drawScene(
     renderPosition,
     state.acceleration,
     3.2,
-    "#A1A1AA",
+    colors.gravity,
     "g",
   );
 }
@@ -303,14 +322,15 @@ function drawGrid(
   viewport: Viewport,
   camera: Camera,
   config: ProjectileConfig,
+  colors: ReturnType<typeof getThemeColors>,
 ) {
   const bounds = getProjectileBounds(config);
   const gridStep = niceGridStep(bounds.width / 8);
 
   context.save();
   context.lineWidth = 1;
-  context.strokeStyle = "#27272A";
-  context.fillStyle = "#71717A";
+  context.strokeStyle = colors.grid;
+  context.fillStyle = colors.text;
   context.font = '10px "Geist Mono", ui-monospace, monospace';
 
   for (let x = 0; x <= bounds.width; x += gridStep) {
@@ -333,7 +353,7 @@ function drawGrid(
     context.fillText(`${Math.round(y)} m`, 8, screen.y - 6);
   }
 
-  context.strokeStyle = "#52525B";
+  context.strokeStyle = colors.ground;
   context.lineWidth = 1.5;
   context.beginPath();
   context.moveTo(0, camera.groundY);
@@ -346,11 +366,12 @@ function drawTrail(
   context: CanvasRenderingContext2D,
   camera: Camera,
   trail: Vector2D[],
+  colors: ReturnType<typeof getThemeColors>,
 ) {
   if (trail.length < 2) return;
 
   context.save();
-  context.strokeStyle = "#71717A";
+  context.strokeStyle = colors.trail;
   context.lineWidth = 1.5;
   context.setLineDash([4, 5]);
   context.beginPath();
@@ -367,13 +388,14 @@ function drawProjectile(
   context: CanvasRenderingContext2D,
   camera: Camera,
   position: Vector2D,
+  colors: ReturnType<typeof getThemeColors>,
 ) {
   const screen = worldToScreen(camera, position);
 
   context.save();
   context.shadowBlur = 16;
-  context.shadowColor = "rgba(250, 250, 250, 0.28)";
-  context.fillStyle = "#FAFAFA";
+  context.shadowColor = colors.shadow;
+  context.fillStyle = colors.projectile;
   context.beginPath();
   context.arc(screen.x, screen.y, 6, 0, Math.PI * 2);
   context.fill();

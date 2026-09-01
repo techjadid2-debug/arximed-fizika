@@ -40,12 +40,13 @@ export function VideoPlayer({ url, title, emptyLabel }: VideoPlayerProps) {
   );
 }
 
-export function VideoBadge({ minutes }: { minutes: number | null }) {
+export function VideoBadge({ minutes, locale = "uz" }: { minutes: number | null; locale?: string }) {
   if (!minutes) return null;
+  const label = locale === "uz" ? "daq" : locale === "en" ? "min" : "мин";
   return (
     <span className="flex min-h-8 items-center gap-1.5 rounded-md border border-border px-2.5 font-mono text-xs text-muted-foreground">
       <Video className="size-3.5" />
-      {minutes} daq
+      {minutes} {label}
     </span>
   );
 }

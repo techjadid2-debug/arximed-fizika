@@ -1,15 +1,20 @@
 "use client";
 
-import { ChevronRight, Download, FileText } from "lucide-react";
+import { BookOpen, Check, CheckCircle2, ChevronRight, Download, FileText, FlaskConical, PlayCircle, Sparkles, XCircle } from "lucide-react";
 import { useCallback, useEffect, useMemo } from "react";
 
+import { MeasurementLab } from "@/components/learn/labs/MeasurementLab";
+import { LessonSlideDeck } from "@/components/learn/LessonSlideDeck";
 import { LessonStages, STAGE_IDS, type StageId } from "@/components/learn/LessonStages";
+import { MathContent } from "@/components/learn/MathContent";
 import { PracticeBlock } from "@/components/learn/PracticeBlock";
 import { ReviewBlock } from "@/components/learn/ReviewBlock";
 import { VideoBadge, VideoPlayer } from "@/components/learn/VideoPlayer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import type { Locale } from "@/lib/i18n";
+import { cn } from "@/lib/utils";
 import { useLessonStore } from "@/store/useLessonStore";
 import { todayKey, useProgressStore, XP } from "@/store/useProgressStore";
 import type { Lesson } from "@/types/lesson";
@@ -17,6 +22,7 @@ import type { Lesson } from "@/types/lesson";
 const stageInput = "stage";
 const watchedActivity = "video.watched";
 const quizActivity = "quiz.complete";
+const homeworkActivity = "homework.completed";
 
 export function LessonShell({
   lessonId,
@@ -75,24 +81,40 @@ export function LessonShell({
           : locale === "en"
             ? "Questions you got wrong earlier. Answer correctly and they return later."
             : "Вопросы, в которых вы ошиблись. Ответьте верно — они вернутся позже.",
+      completeHomeworkBtn:
+        locale === "uz"
+          ? "Vazifani o‘qidim · Darsni yakunlash"
+          : locale === "en"
+            ? "Reviewed homework · Complete lesson"
+            : "Ознакомился · Завершить урок",
+      lessonDoneSuccess:
+        locale === "uz"
+          ? "Dars muvaffaqiyatli yakunlandi! +50 XP"
+          : locale === "en"
+            ? "Lesson completed successfully! +50 XP"
+            : "Урок успешно завершён! +50 XP",
+      correctTitle: locale === "uz" ? "To‘g‘ri! " : locale === "en" ? "Correct! " : "Верно! ",
+      wrongTitle: locale === "uz" ? "Noto‘g‘ri. " : locale === "en" ? "Incorrect. " : "Неверно. ",
     }),
     [locale],
   );
 
   const answered = lesson.quiz.filter((item) => progress?.quizAttempts[item.id]).length;
 
-  const completed = useMemo<Record<StageId, boolean>>(
-    () => ({
+  const completed = useMemo<Record<StageId, boolean>>(() => {
+    const hasPractice = lesson.practice.length > 0;
+    const practiceDone =
+      hasPractice && lesson.practice.every((task) => progress?.problemAttempts[task.id]?.isCorrect);
+    const homeworkDone = progress?.completedActivityIds.includes(homeworkActivity) ?? false;
+
+    return {
       video: progress?.completedActivityIds.includes(watchedActivity) ?? false,
       quiz:
         lesson.quiz.length === 0 ||
         (progress?.completedActivityIds.includes(quizActivity) ?? false),
-      homework:
-        lesson.practice.length > 0 &&
-        lesson.practice.every((task) => progress?.problemAttempts[task.id]?.isCorrect),
-    }),
-    [progress, lesson.quiz.length, lesson.practice],
-  );
+      homework: hasPractice ? practiceDone : homeworkDone,
+    };
+  }, [progress, lesson.quiz.length, lesson.practice]);
 
   const unlocked = useMemo<Record<StageId, boolean>>(
     () => ({ video: true, quiz: completed.video, homework: completed.quiz }),
@@ -123,7 +145,7 @@ export function LessonShell({
           <p className="font-mono text-[11px] uppercase tracking-[.16em] text-muted-foreground">
             {lesson.courseSlug} · {lesson.number}
           </p>
-          <VideoBadge minutes={lesson.videoDurationMin} />
+          <VideoBadge minutes={lesson.videoDurationMin} locale={locale} />
         </div>
         <h1 className="mt-2.5 text-3xl font-semibold tracking-[-.04em] sm:text-4xl">
           {lesson.title}
@@ -143,10 +165,52 @@ export function LessonShell({
         />
       </div>
 
-      {/* ── 01 Video ────────────────────────────────────────────────────── */}
+      {/* ── 01 Nazariya / Slaydlar / Video ───────────────────────────────── */}
       {activeStage === "video" && (
-        <section className="mt-7">
-          <VideoPlayer url={lesson.videoUrl} title={lesson.title} emptyLabel={t.soon} />
+        <section className="mt-7 space-y-6">
+          {lesson.number === "01" ? (
+            <Tabs defaultValue="slides" className="w-full">
+              <div className="flex items-center justify-between">
+                <TabsList className="min-h-10">
+                  <TabsTrigger value="slides" className="text-xs sm:text-sm">
+                    <BookOpen className="mr-1.5 size-3.5" />
+                    {locale === "uz" ? "Slaydlar (12 ta)" : locale === "en" ? "Slides (12)" : "Слайды (12)"}
+                  </TabsTrigger>
+                  <TabsTrigger value="video" className="text-xs sm:text-sm">
+                    <PlayCircle className="mr-1.5 size-3.5" />
+                    {locale === "uz" ? "Video dars" : locale === "en" ? "Video Lesson" : "Видеоурок"}
+                  </TabsTrigger>
+                  <TabsTrigger value="lab" className="text-xs sm:text-sm">
+                    <FlaskConical className="mr-1.5 size-3.5" />
+                    {locale === "uz" ? "Laboratoriya" : locale === "en" ? "Virtual Lab" : "Лаборатория"}
+                  </TabsTrigger>
+                </TabsList>
+              </div>
+
+              <TabsContent value="slides" className="mt-4">
+                <LessonSlideDeck
+                  locale={locale}
+                  onComplete={() => {
+                    if (!completed.video) {
+                      completeActivity(lessonId, watchedActivity);
+                      award(XP.videoWatched, todayKey());
+                    }
+                  }}
+                />
+              </TabsContent>
+
+              <TabsContent value="video" className="mt-4">
+                <VideoPlayer url={lesson.videoUrl} title={lesson.title} emptyLabel={t.soon} />
+              </TabsContent>
+
+              <TabsContent value="lab" className="mt-4">
+                <MeasurementLab locale={locale} />
+              </TabsContent>
+            </Tabs>
+          ) : (
+            <VideoPlayer url={lesson.videoUrl} title={lesson.title} emptyLabel={t.soon} />
+          )}
+
           <div className="mt-5 flex justify-end">
             <Button
               onClick={() => {
@@ -189,41 +253,78 @@ export function LessonShell({
                   const attempt = progress?.quizAttempts[question.id];
                   return (
                     <div key={question.id} className="border-t border-border pt-5">
-                      <p className="font-medium leading-6">
-                        <span className="mr-3 font-mono text-xs text-muted-foreground">
+                      <div className="flex items-start gap-3">
+                        <span className="mt-0.5 font-mono text-xs text-muted-foreground">
                           {String(index + 1).padStart(2, "0")}
                         </span>
-                        {question.question}
-                      </p>
-                      <div className="mt-4 grid gap-2 sm:grid-cols-3">
-                        {question.options.map((option) => (
-                          <Button
-                            key={option.id}
-                            variant={attempt?.selectedOptionId === option.id ? "secondary" : "outline"}
-                            className="min-h-11 justify-start rounded-md px-4 text-left"
-                            onClick={() => {
-                              const today = todayKey();
-                              submitQuiz(lessonId, question.id, option.id, option.isCorrect);
-                              // XP faqat birinchi urinishdagi to‘g‘ri javob uchun.
-                              if (option.isCorrect && !attempt) award(XP.quizCorrect, today);
-                              if (option.isCorrect) clearMistake(question.id, today);
-                              else recordMistake(lessonId, question.id, "quiz", today);
-                              if (answered + (attempt ? 0 : 1) === lesson.quiz.length) {
-                                completeActivity(lessonId, quizActivity);
-                              }
-                            }}
-                          >
-                            {option.label}
-                          </Button>
-                        ))}
+                        <div className="flex-1 font-medium leading-6">
+                          <MathContent content={question.question} inline />
+                        </div>
                       </div>
+
+                      <div className="mt-4 grid gap-2.5 sm:grid-cols-3">
+                        {question.options.map((option) => {
+                          const isSelected = attempt?.selectedOptionId === option.id;
+                          let buttonStyle = "border-border hover:bg-accent/50";
+                          if (attempt) {
+                            if (isSelected) {
+                              buttonStyle = attempt.isCorrect
+                                ? "border-emerald-500 bg-emerald-500/10 text-emerald-950 dark:text-emerald-300 font-medium"
+                                : "border-rose-500 bg-rose-500/10 text-rose-950 dark:text-rose-300 font-medium";
+                            } else if (option.isCorrect) {
+                              buttonStyle =
+                                "border-emerald-500/40 bg-emerald-500/5 text-emerald-900 dark:text-emerald-300/80";
+                            } else {
+                              buttonStyle = "opacity-50 border-border";
+                            }
+                          }
+
+                          return (
+                            <Button
+                              key={option.id}
+                              variant="outline"
+                              className={cn(
+                                "min-h-12 justify-start rounded-md px-4 text-left transition-all",
+                                buttonStyle,
+                              )}
+                              onClick={() => {
+                                const today = todayKey();
+                                submitQuiz(lessonId, question.id, option.id, option.isCorrect);
+                                if (option.isCorrect && !attempt) award(XP.quizCorrect, today);
+                                if (option.isCorrect) clearMistake(question.id, today);
+                                else recordMistake(lessonId, question.id, "quiz", today);
+                                if (answered + (attempt ? 0 : 1) === lesson.quiz.length) {
+                                  completeActivity(lessonId, quizActivity);
+                                }
+                              }}
+                            >
+                              <MathContent content={option.label} className="text-left leading-5" />
+                            </Button>
+                          );
+                        })}
+                      </div>
+
                       {attempt && (
-                        <p className="mt-3 text-sm leading-6 text-muted-foreground">
-                          <span className="font-medium text-foreground">
-                            {attempt.isCorrect ? "✓ " : "→ "}
-                          </span>
-                          {question.explanation}
-                        </p>
+                        <div
+                          className={cn(
+                            "mt-3.5 flex items-start gap-2.5 rounded-md p-3.5 text-sm leading-6",
+                            attempt.isCorrect
+                              ? "border border-emerald-500/20 bg-emerald-500/10 text-emerald-950 dark:text-emerald-200"
+                              : "border border-border bg-muted/60 text-muted-foreground",
+                          )}
+                        >
+                          {attempt.isCorrect ? (
+                            <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-emerald-500" />
+                          ) : (
+                            <XCircle className="mt-0.5 size-4 shrink-0 text-rose-500" />
+                          )}
+                          <div className="flex-1">
+                            <span className="font-semibold text-foreground">
+                              {attempt.isCorrect ? t.correctTitle : t.wrongTitle}
+                            </span>
+                            <MathContent content={question.explanation} inline className="text-sm" />
+                          </div>
+                        </div>
                       )}
                     </div>
                   );
@@ -255,9 +356,9 @@ export function LessonShell({
                 <div>
                   <h2 className="text-2xl font-semibold">{lesson.homework.title}</h2>
                   {lesson.homework.body && (
-                    <p className="mt-3 max-w-xl leading-7 text-muted-foreground">
-                      {lesson.homework.body}
-                    </p>
+                    <div className="mt-3 max-w-xl text-muted-foreground">
+                      <MathContent content={lesson.homework.body} />
+                    </div>
                   )}
                 </div>
                 {lesson.homework.pdfUrl && (
@@ -270,7 +371,7 @@ export function LessonShell({
                 )}
               </div>
 
-              {lesson.practice.length > 0 && (
+              {lesson.practice.length > 0 ? (
                 <div className="mt-8 border-t border-border pt-6">
                   <p className="font-mono text-xs uppercase tracking-wider text-muted-foreground">
                     {t.practiceTitle}
@@ -294,6 +395,30 @@ export function LessonShell({
                       }}
                     />
                   </div>
+                </div>
+              ) : (
+                <div className="mt-8 border-t border-border pt-6">
+                  {!completed.homework ? (
+                    <div className="flex justify-end">
+                      <Button
+                        onClick={() => {
+                          completeActivity(lessonId, homeworkActivity);
+                          award(XP.practiceCorrect, todayKey());
+                        }}
+                        className="min-h-11 rounded-md"
+                      >
+                        <Check className="size-4" />
+                        {t.completeHomeworkBtn}
+                      </Button>
+                    </div>
+                  ) : null}
+                </div>
+              )}
+
+              {lessonDone && (
+                <div className="mt-6 flex items-center gap-2.5 rounded-lg border border-emerald-500/30 bg-emerald-500/10 p-4 font-mono text-xs text-emerald-950 dark:text-emerald-200">
+                  <Sparkles className="size-4 text-emerald-500" />
+                  <span className="font-medium">{t.lessonDoneSuccess}</span>
                 </div>
               )}
 

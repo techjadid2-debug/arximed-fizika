@@ -501,276 +501,201 @@
       "intro": "Fizik kattaliklar, o‘lchash va Xalqaro birliklar sistemasi (SI) bilan tanishamiz.",
       "videoUrl": null,
       "videoDurationMin": null,
-      "homeworkTitle": "Mashqlarni bajaring va o‘zingizni tekshiring",
-      "homeworkBody": "Quyidagi mashqlar javobini shu yerda darhol tekshirishingiz mumkin. PDF ichida to‘liq mashqlar berilgan.",
+      "homeworkTitle": "10 ta masalani yeching va o‘zingizni tekshiring",
+      "homeworkBody": "Quyidagi masalalar soddadan murakkabga tomon saralangan. Har bir javobni son sifatida kiriting va darhol tekshiring.",
       "homeworkPdfUrl": "/materials/ilk-qadam/01-uyga-vazifa.pdf",
       "quiz": [
         {
           "position": 1,
-          "question": "SI sistemasida uzunlikning asosiy birligi qaysi?",
-          "explanation": "Uzunlikning SI asosiy birligi — metr (m). Kilometr va santimetr metrdan prefiks yordamida hosil qilingan.",
+          "question": "Fizik kattalik qanday qismlardan tashkil topadi?",
+          "explanation": "Har qanday fizik kattalik sonli qiymat va o‘lchov birligi ko‘paytmasidan iborat ($A = \\{A\\} \\times [A]$).",
           "options": [
-            {
-              "position": 1,
-              "label": "metr",
-              "isCorrect": true
-            },
-            {
-              "position": 2,
-              "label": "kilometr",
-              "isCorrect": false
-            },
-            {
-              "position": 3,
-              "label": "santimetr",
-              "isCorrect": false
-            }
+            { "position": 1, "label": "Faqat sonli qiymatdan", "isCorrect": false },
+            { "position": 2, "label": "Faqat o‘lchov birligidan", "isCorrect": false },
+            { "position": 3, "label": "Sonli qiymat va o‘lchov birligidan", "isCorrect": true }
           ]
         },
         {
           "position": 2,
-          "question": "2,5 km necha metr?",
-          "explanation": "1 km = 1000 m, demak 2,5 × 1000 = 2500 m.",
+          "question": "SI xalqaro birliklar sistemasida uzunlikning asosiy birligi qaysi?",
+          "explanation": "SI sistemasida uzunlikning asosiy etalon birligi metr ($m$) dir.",
           "options": [
-            {
-              "position": 1,
-              "label": "250 m",
-              "isCorrect": false
-            },
-            {
-              "position": 2,
-              "label": "2500 m",
-              "isCorrect": true
-            },
-            {
-              "position": 3,
-              "label": "25 000 m",
-              "isCorrect": false
-            }
+            { "position": 1, "label": "Kilometr (km)", "isCorrect": false },
+            { "position": 2, "label": "Metr (m)", "isCorrect": true },
+            { "position": 3, "label": "Santimetr (sm)", "isCorrect": false }
           ]
         },
         {
           "position": 3,
-          "question": "Quyidagilardan qaysi biri SI ning asosiy birligi EMAS?",
-          "explanation": "Nyuton — hosilaviy birlik: 1 N = 1 kg·m/s². Kelvin va kandela esa 7 ta asosiy birlik qatoriga kiradi.",
+          "question": "Quyidagi asboblardan qaysi biri vaqt oralig‘ini o‘lchash uchun mo‘ljallangan?",
+          "explanation": "Sekundomer vaqt oralig‘ini o‘lchaydi. Dinamometr kuchni, menzurka esa suyuqlik hajmini o‘lchaydi.",
           "options": [
-            {
-              "position": 1,
-              "label": "kelvin",
-              "isCorrect": false
-            },
-            {
-              "position": 2,
-              "label": "nyuton",
-              "isCorrect": true
-            },
-            {
-              "position": 3,
-              "label": "kandela",
-              "isCorrect": false
-            }
+            { "position": 1, "label": "Sekundomer", "isCorrect": true },
+            { "position": 2, "label": "Dinamometr", "isCorrect": false },
+            { "position": 3, "label": "Menzurka", "isCorrect": false }
           ]
         },
         {
           "position": 4,
-          "question": "1 m² necha sm² ga teng?",
-          "explanation": "1 m = 100 sm, yuzada ko‘paytuvchi kvadratga ko‘tariladi: 100² = 10 000 sm². Bu eng ko‘p uchraydigan xato.",
+          "question": "Quyidagi kattaliklardan qaysi biri hosilaviy (asosiy bo‘lmagan) kattalik hisoblanadi?",
+          "explanation": "Tezlik ($v = s/t$) masofa va vaqt orqali hosil qilingan hosilaviy kattalikdir. Massa va vaqt esa asosiy kattaliklardir.",
           "options": [
-            {
-              "position": 1,
-              "label": "100 sm²",
-              "isCorrect": false
-            },
-            {
-              "position": 2,
-              "label": "1000 sm²",
-              "isCorrect": false
-            },
-            {
-              "position": 3,
-              "label": "10 000 sm²",
-              "isCorrect": true
-            }
+            { "position": 1, "label": "Massa", "isCorrect": false },
+            { "position": 2, "label": "Vaqt", "isCorrect": false },
+            { "position": 3, "label": "Tezlik", "isCorrect": true }
           ]
         },
         {
           "position": 5,
-          "question": "Quyidagi kattaliklardan qaysi biri vektor?",
-          "explanation": "Kuchni to‘liq ifodalash uchun yo‘nalish ham kerak — demak u vektor. Massa va harorat esa skalyar kattaliklar.",
+          "question": "$1\\text{ Nyuton}$ ($1\\text{ N}$) kuchi asosiy SI birliklarida qanday yoziladi?",
+          "explanation": "Nyutonning 2-qonuniga binoan $F = m \\cdot a$, shuning uchun $[F] = \\text{kg} \\cdot \\text{m/s}^2 = \\text{kg}\\cdot\\text{m/s}^2$.",
           "options": [
-            {
-              "position": 1,
-              "label": "Massa",
-              "isCorrect": false
-            },
-            {
-              "position": 2,
-              "label": "Kuch",
-              "isCorrect": true
-            },
-            {
-              "position": 3,
-              "label": "Harorat",
-              "isCorrect": false
-            }
+            { "position": 1, "label": "$\\text{kg}\\cdot\\text{m/s}^2$", "isCorrect": true },
+            { "position": 2, "label": "$\\text{kg}\\cdot\\text{m/s}$", "isCorrect": false },
+            { "position": 3, "label": "$\\text{g}\\cdot\\text{sm/s}^2$", "isCorrect": false }
           ]
         },
         {
           "position": 6,
-          "question": "750 sm necha metr?",
-          "explanation": "1 m = 100 sm, shuning uchun 750 ÷ 100 = 7,5 m. Kichikdan kattaga o‘tayotganda bo‘lamiz.",
+          "question": "1999-yilda NASA ning Mars Climate Orbiter kosmik zondi nima sababdan halokatga uchragan?",
+          "explanation": "Bir guruh muhandislar ingliz (funt-kuch), boshqa guruh esa metrik SI (nyuton) birliklarida hisoblagani sababli apparat Mars atmosferasida yo‘q bo‘lgan.",
           "options": [
-            {
-              "position": 1,
-              "label": "0,75 m",
-              "isCorrect": false
-            },
-            {
-              "position": 2,
-              "label": "7,5 m",
-              "isCorrect": true
-            },
-            {
-              "position": 3,
-              "label": "75 m",
-              "isCorrect": false
-            }
+            { "position": 1, "label": "Yoqilg‘isi tugab qolgani sababli", "isCorrect": false },
+            { "position": 2, "label": "O‘lchov birliklari (funt va metr) chalkashtirilgani sababli", "isCorrect": true },
+            { "position": 3, "label": "Quyosh panellari sinib ketgani sababli", "isCorrect": false }
           ]
         },
         {
           "position": 7,
-          "question": "Qaysi yozuv fizik kattalikni to‘liq ifodalaydi?",
-          "explanation": "Fizik kattalik son qiymati va birlikdan iborat. Yolg‘iz son yoki yolg‘iz birlik yetarli emas.",
+          "question": "$450\\text{ milligramm}$ ($450\\text{ mg}$) necha gramm ($g$) ga teng?",
+          "explanation": "$1\\text{ mg} = 10^{-3}\\text{ g} = 0.001\\text{ g}$. Demak, $450 \\times 0.001 = 0.45\\text{ g}$.",
           "options": [
-            {
-              "position": 1,
-              "label": "12",
-              "isCorrect": false
-            },
-            {
-              "position": 2,
-              "label": "12 metr",
-              "isCorrect": true
-            },
-            {
-              "position": 3,
-              "label": "metr",
-              "isCorrect": false
-            }
+            { "position": 1, "label": "$0.45\\text{ g}$", "isCorrect": true },
+            { "position": 2, "label": "$4.5\\text{ g}$", "isCorrect": false },
+            { "position": 3, "label": "$0.045\\text{ g}$", "isCorrect": false }
           ]
         },
         {
           "position": 8,
-          "question": "0,00000045 m ni ilmiy yozuvda qanday ifodalaymiz?",
-          "explanation": "Ilmiy yozuvda birinchi ko‘paytuvchi 1 dan 10 gacha bo‘lishi shart. Vergul 7 xona o‘ngga surilgani uchun daraja −7.",
+          "question": "Chizg‘ichning ikkita eng yaqin bo‘linmasi orasidagi masofa $1\\text{ mm}$. Ushbu chizg‘ichning o‘lchash xatoligi qancha?",
+          "explanation": "To‘g‘ridan-to‘g‘ri o‘lchash asbobining mutlaq xatoligi eng kichik bo‘lim qiymatining yarmiga teng: $\\Delta x = 1\\text{ mm} / 2 = 0.5\\text{ mm}$.",
           "options": [
-            {
-              "position": 1,
-              "label": "45 × 10⁻⁸ m",
-              "isCorrect": false
-            },
-            {
-              "position": 2,
-              "label": "4,5 × 10⁻⁷ m",
-              "isCorrect": true
-            },
-            {
-              "position": 3,
-              "label": "4,5 × 10⁷ m",
-              "isCorrect": false
-            }
+            { "position": 1, "label": "$1\\text{ mm}$", "isCorrect": false },
+            { "position": 2, "label": "$0.5\\text{ mm}$", "isCorrect": true },
+            { "position": 3, "label": "$0.1\\text{ mm}$", "isCorrect": false }
           ]
         },
         {
           "position": 9,
-          "question": "Lineykada 0 va 2 sm orasida 20 ta bo‘linma bor. Bo‘linish qiymati qancha?",
-          "explanation": "2 sm ÷ 20 bo‘linma = 0,1 sm = 1 mm. Bo‘linish qiymati = qiymatlar farqi ÷ bo‘linmalar soni.",
+          "question": "Qaysi son standart ko‘rinishda (scientific notation) to‘g‘ri yozilgan?",
+          "explanation": "Standart shaklda $a \\times 10^n$ da ko‘paytuvchi $1 \\le a < 10$ oralig‘ida bo‘lishi lozim. Shuning uchun $4.5 \\times 10^4$ to‘g‘ri.",
           "options": [
-            {
-              "position": 1,
-              "label": "1 mm",
-              "isCorrect": true
-            },
-            {
-              "position": 2,
-              "label": "2 mm",
-              "isCorrect": false
-            },
-            {
-              "position": 3,
-              "label": "0,5 mm",
-              "isCorrect": false
-            }
+            { "position": 1, "label": "$45 \\times 10^3$", "isCorrect": false },
+            { "position": 2, "label": "$4.5 \\times 10^4$", "isCorrect": true },
+            { "position": 3, "label": "$0.45 \\times 10^5$", "isCorrect": false }
           ]
         },
         {
           "position": 10,
-          "question": "«Milli» prefiksi birlikni nechaga ko‘paytiradi?",
-          "explanation": "milli = 10⁻³, ya’ni mingdan bir. 10⁻² — santi, 10⁻⁶ — mikro.",
+          "question": "O‘lchamlilik tahliliga ko‘ra $E = m c^2$ formulasida energiya $E$ ning asosiy SI birliklaridagi o‘lchami qaysi?",
+          "explanation": "$[E] = [m] \\times [c]^2 = \\text{kg} \\times (\\text{m/s})^2 = \\text{kg}\\cdot\\text{m}^2/\\text{s}^2$, bu $1\\text{ Joul}$ ga teng.",
           "options": [
-            {
-              "position": 1,
-              "label": "10⁻²",
-              "isCorrect": false
-            },
-            {
-              "position": 2,
-              "label": "10⁻³",
-              "isCorrect": true
-            },
-            {
-              "position": 3,
-              "label": "10⁻⁶",
-              "isCorrect": false
-            }
+            { "position": 1, "label": "$\\text{kg}\\cdot\\text{m}^2/\\text{s}^2$ (Joul)", "isCorrect": true },
+            { "position": 2, "label": "$\\text{kg}\\cdot\\text{m/s}$", "isCorrect": false },
+            { "position": 3, "label": "$\\text{kg}^2\\cdot\\text{m/s}^2$", "isCorrect": false }
           ]
         }
       ],
       "practice": [
         {
           "position": 1,
-          "prompt": "3,6 km ni metrga aylantiring.",
+          "prompt": "Toshkent va Samarqand shaharlari orasidagi masofa taxminan $310\\text{ km}$. Ushbu masofani metr ($m$) larda ifodalang.",
           "unit": "m",
-          "answer": 3600,
-          "tolerance": 0.5,
-          "hint": "1 km = 1000 m. Kattadan kichikka o‘tyapsiz — ko‘paytiring.",
-          "solution": "3,6 × 1000 = 3600 m"
+          "answer": 310000,
+          "tolerance": 1,
+          "hint": "$1\\text{ km} = 1000\\text{ m}$. $310$ ni $1000$ ga ko‘paytiring.",
+          "solution": "$s = 310 \\times 1000\\text{ m} = 310\\,000\\text{ m}$."
         },
         {
           "position": 2,
-          "prompt": "2500 g necha kilogramm?",
-          "unit": "kg",
-          "answer": 2.5,
-          "tolerance": 0.01,
-          "hint": "1 kg = 1000 g. Kichikdan kattaga o‘tyapsiz — bo‘ling.",
-          "solution": "2500 ÷ 1000 = 2,5 kg"
+          "prompt": "Dars davomiyligi $45\\text{ minut}$. Ushbu vaqtni sekund ($s$) larda toping.",
+          "unit": "s",
+          "answer": 2700,
+          "tolerance": 1,
+          "hint": "$1\\text{ minut} = 60\\text{ sekund}$. $45$ ni $60$ ga ko‘paytiring.",
+          "solution": "$t = 45 \\times 60\\text{ s} = 2700\\text{ s}$."
         },
         {
           "position": 3,
-          "prompt": "1,5 soat necha sekund?",
-          "unit": "s",
-          "answer": 5400,
-          "tolerance": 0.5,
-          "hint": "1 soat = 60 min, 1 min = 60 s. Demak 1 soat = 3600 s.",
-          "solution": "1,5 × 3600 = 5400 s"
+          "prompt": "Laboratoriya tarozisida detal massasi $350\\text{ g}$ chiqdi. Detal massasini SI asosiy birligi — kilogramm ($kg$) da ifodalang.",
+          "unit": "kg",
+          "answer": 0.35,
+          "tolerance": 0.01,
+          "hint": "$1\\text{ kg} = 1000\\text{ g}$. Grammdan kilogrammga o‘tish uchun $1000$ ga bo‘ling.",
+          "solution": "$m = 350 / 1000\\text{ kg} = 0.35\\text{ kg}$."
         },
         {
           "position": 4,
-          "prompt": "72 km/soat tezlikni m/s ga aylantiring.",
-          "unit": "m/s",
-          "answer": 20,
-          "tolerance": 0.05,
-          "hint": "72 km = 72 000 m, 1 soat = 3600 s. Yoki qisqa yo‘l: 3,6 ga bo‘ling.",
-          "solution": "72 000 ÷ 3600 = 20 m/s  (yoki 72 ÷ 3,6 = 20)"
+          "prompt": "Daftar sahifasining yuzi $300\\text{ sm}^2$. Ushbu yuzani kvadrat metr ($\\text{m}^2$) larda ifodalang.",
+          "unit": "m²",
+          "answer": 0.03,
+          "tolerance": 0.001,
+          "hint": "$1\\text{ m} = 100\\text{ sm} \\implies 1\\text{ m}^2 = 10\\,000\\text{ sm}^2$. $300$ ni $10\\,000$ ga bo‘ling.",
+          "solution": "$S = 300 / 10\\,000 = 0.03\\text{ m}^2$."
         },
         {
           "position": 5,
-          "prompt": "2,5 m² necha sm² ga teng?",
-          "unit": "sm²",
-          "answer": 25000,
+          "prompt": "Idishdagi sharbat hajmi $2.5\\text{ litr}$. $1\\text{ litr} = 1000\\text{ sm}^3$ ekanligini bilgan holda, sharbat hajmini kub santimetr ($\\text{sm}^3$) da toping.",
+          "unit": "sm³",
+          "answer": 2500,
           "tolerance": 1,
-          "hint": "1 m = 100 sm, lekin yuzada ko‘paytuvchi kvadratga ko‘tariladi: 100² = 10 000.",
-          "solution": "2,5 × 10 000 = 25 000 sm²"
+          "hint": "$1\\text{ litr} = 1000\\text{ sm}^3$. $2.5$ ni $1000$ ga ko‘paytiring.",
+          "solution": "$V = 2.5 \\times 1000\\text{ sm}^3 = 2500\\text{ sm}^3$."
+        },
+        {
+          "position": 6,
+          "prompt": "Tezyurar poyezd $108\\text{ km/soat}$ tezlik bilan harakatlanmoqda. Poyezd tezligini SI birligi — $\\text{m/s}$ larda ifodalang.",
+          "unit": "m/s",
+          "answer": 30,
+          "tolerance": 0.1,
+          "hint": "$\\text{km/soat}$ dan $\\text{m/s}$ ga o‘tish uchun $3.6$ ga bo‘ling ($108 / 3.6$).",
+          "solution": "$v = 108 \\times \\frac{1000\\text{ m}}{3600\\text{ s}} = 30\\text{ m/s}$."
+        },
+        {
+          "position": 7,
+          "prompt": "Alyuminiy bo‘lagining zichligi $2.7\\text{ g/sm}^3$. Alyuminiy zichligini SI birligi — $\\text{kg/m}^3$ da ifodalang.",
+          "unit": "kg/m³",
+          "answer": 2700,
+          "tolerance": 1,
+          "hint": "$1\\text{ g/sm}^3 = 1000\\text{ kg/m}^3$. $2.7$ ni $1000$ ga ko‘paytiring.",
+          "solution": "$\\rho = 2.7 \\times 1000 = 2700\\text{ kg/m}^3$."
+        },
+        {
+          "position": 8,
+          "prompt": "Zamonaviy protsessordagi tranzistor o‘lchami $3\\text{ nanometr}$ ($3\\text{ nm} = 3 \\times 10^{-9}\\text{ m}$). $1.5\\text{ millimetr}$ ($1.5\\text{ mm} = 1.5 \\times 10^{-3}\\text{ m}$) uzunlikka qatorasiga nechta tranzistor joylashadi?",
+          "unit": "ta",
+          "answer": 500000,
+          "tolerance": 10,
+          "hint": "Uzunlikni tranzistor o‘lchamiga bo‘ling: $(1.5 \\times 10^{-3}) / (3 \\times 10^{-9})$.",
+          "solution": "$N = \\frac{1.5 \\times 10^{-3}}{3 \\times 10^{-9}} = 0.5 \\times 10^6 = 500\\,000\\text{ ta}$."
+        },
+        {
+          "position": 9,
+          "prompt": "Mars roveri $1.8\\text{ km}$ masofani $2.5\\text{ soat}$ da bosib o‘tdi. Uning o‘rtacha tezligini santimetr sekundiga ($\\text{sm/s}$) larda hisoblang.",
+          "unit": "sm/s",
+          "answer": 20,
+          "tolerance": 0.5,
+          "hint": "$s = 1.8\\text{ km} = 180\\,000\\text{ sm}$, $t = 2.5 \\times 3600\\text{ s} = 9000\\text{ s}$. $v = s / t$.",
+          "solution": "$v = \\frac{180\\,000\\text{ sm}}{9000\\text{ s}} = 20\\text{ sm/s}$."
+        },
+        {
+          "position": 10,
+          "prompt": "Massasi $80\\text{ kg}$ bo‘lgan odamning oyoq kiyimlari tagining umumiy yuzi $400\\text{ sm}^2 = 0.04\\text{ m}^2$. Odamning yerga ko‘rsatadigan bosimini Kilopaskal ($\\text{kPa}$) larda toping. ($g = 10\\text{ m/s}^2$ deb oling).",
+          "unit": "kPa",
+          "answer": 20,
+          "tolerance": 0.2,
+          "hint": "Kuch $F = m g = 800\\text{ N}$. Bosim $P = F / S = 800 / 0.04 = 20\\,000\\text{ Pa}$. $1000$ ga bo‘lib $\\text{kPa}$ ga o‘ting.",
+          "solution": "$P = \\frac{80 \\times 10}{0.04} = 20\\,000\\text{ Pa} = 20\\text{ kPa}$."
         }
       ]
     }

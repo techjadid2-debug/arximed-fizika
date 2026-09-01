@@ -130,18 +130,34 @@ export async function saveQuestion(
   if (error) return { ok: false, message: error.message };
 
   // Variantlar: label va to‘g‘riligi
+  // Triggerni buzmaslik uchun avval noto‘g‘ri variantlarni is_correct=false qilamiz,
+  // so‘ngra tanlangan to‘g‘ri variantni is_correct=true qilamiz.
   const { data: options } = await supabase
     .from("quiz_options")
     .select("id")
     .eq("question_id", questionId);
 
-  for (const option of options ?? []) {
+  const optionList = options ?? [];
+  const targetCorrectOption = optionList.find((option) => option.id === correct);
+  const otherOptions = optionList.filter((option) => option.id !== correct);
+
+  for (const option of otherOptions) {
     const label = String(form.get(`label-${option.id}`) ?? "").trim();
     if (!label) return { ok: false, message: "Variant matni bo‘sh bo‘lmasin." };
     const { error: updateError } = await supabase
       .from("quiz_options")
-      .update({ label, is_correct: option.id === correct })
+      .update({ label, is_correct: false })
       .eq("id", option.id);
+    if (updateError) return { ok: false, message: updateError.message };
+  }
+
+  if (targetCorrectOption) {
+    const label = String(form.get(`label-${targetCorrectOption.id}`) ?? "").trim();
+    if (!label) return { ok: false, message: "Variant matni bo‘sh bo‘lmasin." };
+    const { error: updateError } = await supabase
+      .from("quiz_options")
+      .update({ label, is_correct: true })
+      .eq("id", targetCorrectOption.id);
     if (updateError) return { ok: false, message: updateError.message };
   }
 

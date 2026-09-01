@@ -58,11 +58,13 @@ export function CourseRoadmap({ course, locale }: { course: Course; locale: Loca
               </summary>
 
               <div className="border-t border-border p-3">
-                {lessons.map((lesson, index) => {
+                {lessons.map((lesson) => {
                   const done = isDone(lesson.number);
-                  const previous = lessons[index - 1];
+                  const previousGlobal = course.lessons.find(
+                    (item) => item.position === lesson.position - 1,
+                  );
                   const unlocked =
-                    lesson.position === 1 || done || (previous ? isDone(previous.number) : false);
+                    lesson.position === 1 || done || (previousGlobal ? isDone(previousGlobal.number) : false);
                   const available = lesson.isPublished && unlocked;
 
                   const row = (

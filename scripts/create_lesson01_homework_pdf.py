@@ -16,51 +16,17 @@ OUTPUT = ROOT / "output/pdf/ilk-qadam-01-uyga-vazifa.pdf"
 PUBLIC = ROOT / "public/materials/ilk-qadam/01-uyga-vazifa.pdf"
 FONT = Path("/System/Library/Fonts/HelveticaNeue.ttc")
 
-# Mashqlar dars bo‘limlariga mos ravishda guruhlangan.
-SECTIONS = [
-    (
-        "A. Atamalar va tushunchalar",
-        [
-            "1. Quyidagilardan qaysilari fizik kattalik ekanini yozing: uzunlik, kitob, vaqt, harorat, ruchka, massa, tezlik.",
-            "2. Fizik kattalik nechta qismdan iborat? Har birini «12,5 m» misolida ko‘rsatib bering.",
-            "3. Quyidagi kattaliklarni skalyar va vektorga ajrating: massa, kuch, vaqt, tezlik, harorat, ko‘chish, energiya.",
-            "4. Fizik hodisa bilan kimyoviy hodisa farqini yozing va har biriga ikkitadan misol keltiring.",
-        ],
-    ),
-    (
-        "B. SI birliklari",
-        [
-            "5. SI ning 7 ta asosiy birligini nomi va belgisi bilan yozing, har biri qaysi kattalikni o‘lchashini ko‘rsating.",
-            "6. Quyidagilardan qaysi biri hosilaviy birlik: kelvin, nyuton, kandela, mol? Javobingizni asoslang.",
-            "7. Nyutonni asosiy birliklar orqali yozing: 1 N = ? Xuddi shunday joul uchun ham yozing.",
-            "8. «SI» qisqartmasi qaysi tildagi qaysi iboradan olingan? O‘zbek tilidagi to‘liq nomini yozing.",
-        ],
-    ),
-    (
-        "C. Birliklarni aylantirish",
-        [
-            "9. Metrda ifodalang: a) 4,8 km   b) 325 sm   c) 0,006 km   d) 750 mm",
-            "10. a) 2,75 kg ni grammda,  b) 18 minutni sekundda,  c) 1,5 soatni sekundda ifodalang.",
-            "11. 90 km/soat tezlikni m/s ga aylantiring. Hisoblash yo‘lini to‘liq ko‘rsating.",
-            "12. a) 3 m² necha sm²?   b) 2 m³ necha sm³?   Nega ko‘paytuvchi 100 emasligini bir jumlada tushuntiring.",
-        ],
-    ),
-    (
-        "D. Ilmiy yozuv va prefikslar",
-        [
-            "13. Ilmiy yozuvda ifodalang: a) 384 000 000 m   b) 0,0000075 m   c) 5 970 000 000 000 000 000 000 000 kg",
-            "14. Oddiy son ko‘rinishida yozing: a) 3,2 x 10³ m   b) 4,5 x 10⁻⁴ s   c) 1,2 x 10⁶ g",
-            "15. Prefikslarni 10 ning darajasi bilan moslang: nano, milli, santi, kilo, mega, mikro.",
-        ],
-    ),
-    (
-        "E. O‘lchash va aniqlik",
-        [
-            "16. Lineykada 0 va 5 sm orasida 50 ta bo‘linma bor. Bo‘linish qiymatini toping.",
-            "17. l = (24,0 ± 0,5) sm o‘lchash natijasining nisbiy xatoligini foizda hisoblang.",
-            "18. Velosipedchi 1,8 km yo‘lni 6 minutda bosib o‘tdi. Masofa va vaqtni SI birliklariga aylantiring, so‘ng o‘rtacha tezlikni m/s da toping.",
-        ],
-    ),
+PROBLEMS = [
+    ("1. Uzunlikni aylantirish", "Toshkent va Samarqand shaharlari orasidagi masofa taxminan 310 km. Ushbu masofani metr (m) larda ifodalang."),
+    ("2. Vaqtni aylantirish", "Dars davomiyligi 45 minut. Ushbu vaqtni sekund (s) larda toping."),
+    ("3. Massani aylantirish", "Laboratoriya tarozisida detal massasi 350 g chiqdi. Detal massasini SI asosiy birligi — kilogramm (kg) da ifodalang."),
+    ("4. Maydon birligi", "Daftar sahifasining yuzi 300 sm². Ushbu yuzani kvadrat metr (m²) larda ifodalang. (1 m² = 10 000 sm²)."),
+    ("5. Hajm birligi", "Idishdagi sharbat hajmi 2.5 litr. 1 litr = 1000 sm³ ekanligini bilgan holda, sharbat hajmini kub santimetr (sm³) da toping."),
+    ("6. Tezlik birligi", "Tezyurar poyezd 108 km/soat tezlik bilan harakatlanmoqda. Poyezd tezligini SI birligi — m/s larda ifodalang."),
+    ("7. Zichlik birligi", "Alyuminiy bo‘lagining zichligi 2.7 g/sm³. Alyuminiy zichligini SI birligi — kg/m³ da ifodalang. (1 g/sm³ = 1000 kg/m³)."),
+    ("8. Nano-texnologiya hisobi", "Zamonaviy protsessordagi tranzistor o‘lchami 3 nanometr (3 nm = 3 × 10⁻⁹ m). 1.5 millimetr (1.5 mm = 1.5 × 10⁻³ m) uzunlikdagi bo‘lakka qatorasiga nechta shunday tranzistor sig‘adi?"),
+    ("9. Mars Rover o‘rtacha tezligi", "Mars roveri 1.8 km masofani 2.5 soatda bosib o‘tdi. Uning o‘rtacha tezligini santimetr sekundiga (sm/s) larda hisoblang."),
+    ("10. Odam bosimi va SI birliklari", "Massasi 80 kg bo‘lgan odamning oyoq kiyimlari tagining umumiy yuzi 400 sm² = 0.04 m². Odamning yerga ko‘rsatadigan bosimini Kilopaskal (kPa) larda toping. (g = 10 m/s², P = F / S)."),
 ]
 
 
@@ -69,54 +35,40 @@ def make_pdf():
     PUBLIC.parent.mkdir(parents=True, exist_ok=True)
     pdfmetrics.registerFont(TTFont("Physica", str(FONT), subfontIndex=0))
     styles = getSampleStyleSheet()
-    title = ParagraphStyle("title", parent=styles["Title"], fontName="Physica", fontSize=20, leading=25, textColor=colors.HexColor("#09090B"), alignment=TA_LEFT, spaceAfter=8)
-    meta = ParagraphStyle("meta", parent=styles["Normal"], fontName="Physica", fontSize=10, leading=15, textColor=colors.HexColor("#52525B"), spaceAfter=16)
-    heading = ParagraphStyle("heading", parent=styles["Heading2"], fontName="Physica", fontSize=12, leading=17, textColor=colors.HexColor("#09090B"), spaceBefore=12, spaceAfter=7)
-    question = ParagraphStyle("question", parent=styles["Normal"], fontName="Physica", fontSize=10.5, leading=17, textColor=colors.HexColor("#18181B"), spaceAfter=9)
-    note = ParagraphStyle("note", parent=styles["Normal"], fontName="Physica", fontSize=9.5, leading=15, textColor=colors.HexColor("#52525B"), spaceBefore=6)
+    title = ParagraphStyle("title", parent=styles["Title"], fontName="Physica", fontSize=18, leading=23, textColor=colors.HexColor("#09090B"), alignment=TA_LEFT, spaceAfter=6)
+    meta = ParagraphStyle("meta", parent=styles["Normal"], fontName="Physica", fontSize=9.5, leading=14, textColor=colors.HexColor("#52525B"), spaceAfter=14)
+    heading = ParagraphStyle("heading", parent=styles["Heading2"], fontName="Physica", fontSize=11, leading=15, textColor=colors.HexColor("#09090B"), spaceBefore=10, spaceAfter=4)
+    question = ParagraphStyle("question", parent=styles["Normal"], fontName="Physica", fontSize=9.5, leading=14, textColor=colors.HexColor("#18181B"), spaceAfter=6)
+    note = ParagraphStyle("note", parent=styles["Normal"], fontName="Physica", fontSize=9, leading=13, textColor=colors.HexColor("#52525B"), spaceBefore=8)
 
-    total = sum(len(items) for _, items in SECTIONS)
     doc = SimpleDocTemplate(
         str(OUTPUT),
         pagesize=A4,
-        leftMargin=22 * mm,
-        rightMargin=22 * mm,
-        topMargin=20 * mm,
-        bottomMargin=20 * mm,
-        title="Ilk qadam - 01 uyga vazifa",
+        leftMargin=20 * mm,
+        rightMargin=20 * mm,
+        topMargin=18 * mm,
+        bottomMargin=18 * mm,
+        title="Ilk qadam - 01 Uyga vazifa",
     )
 
     story = [
-        Paragraph("01-dars: Fizikaga kirish va Xalqaro birliklar sistemasi (SI)", title),
-        Paragraph(
-            f"Ustoz: Abdulvosit Zokirjonov<br/>Uyga vazifa - {total} ta mashq. Javoblarni alohida daftarga yozing.",
-            meta,
-        ),
+        Paragraph("01-dars: Fizik kattaliklar, o‘lchash va SI sistemasi", title),
+        Paragraph("Ustoz: Abdulvosit Zokirjonov | 10 ta amaliy masala (Soddadan murakkabga)", meta),
         Paragraph("Ko‘rsatma", heading),
-        Paragraph(
-            "Har bir hisoblashda birlikni albatta ko‘rsating - birliksiz son javob hisoblanmaydi. "
-            "Aylantirishlarda oraliq qadamlarni yozing. Kasrlarda vergul ishlating (masalan 13,3 m/s).",
-            question,
-        ),
-        Spacer(1, 3 * mm),
+        Paragraph("Har bir masalani daftaringizga yeching va hisoblash qadamlarini to‘liq yozing. Javoblaringizni platformaning «Uyga vazifa» sahifasida darhol tekshirib olishingiz mumkin.", question),
+        Spacer(1, 2 * mm),
     ]
 
-    for section_title, items in SECTIONS:
-        story.append(Paragraph(section_title, heading))
-        story.extend(Paragraph(item, question) for item in items)
+    for prob_title, prob_desc in PROBLEMS:
+        story.append(Paragraph(prob_title, heading))
+        story.append(Paragraph(prob_desc, question))
 
-    story.append(Spacer(1, 4 * mm))
-    story.append(
-        Paragraph(
-            "Eslatma: 5, 9, 10, 11 va 12-mashqlarga o‘xshash topshiriqlarni sayt ustidagi "
-            "«Tez tekshiruv» bo‘limida darhol tekshirib ko‘rishingiz mumkin.",
-            note,
-        )
-    )
+    story.append(Spacer(1, 3 * mm))
+    story.append(Paragraph("Eslatma: Ushbu 10 ta masalaning barchasi platformada avtomatik tekshiriladi va har bir to‘g‘ri javob uchun XP beriladi.", note))
 
     doc.build(story)
     copy2(OUTPUT, PUBLIC)
-    print(f"{total} ta mashq -> {PUBLIC.relative_to(ROOT)}")
+    print(f"PDF muvaffaqiyatli yaratildi: {PUBLIC.relative_to(ROOT)}")
 
 
 if __name__ == "__main__":
