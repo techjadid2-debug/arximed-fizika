@@ -1,0 +1,778 @@
+{
+  "course": {
+    "slug": "ilk-qadam",
+    "title": "Ilk qadam",
+    "description": "78 dars · 5 chorak · Fizika asoslari"
+  },
+  "modules": [
+    {
+      "position": 1,
+      "title": "Mexanika"
+    },
+    {
+      "position": 2,
+      "title": "Molekulyar Fizika va Termodinamika"
+    },
+    {
+      "position": 3,
+      "title": "Elektr va Elektromagnetizm"
+    },
+    {
+      "position": 4,
+      "title": "Atom va Yadro Fizikasi"
+    },
+    {
+      "position": 5,
+      "title": "Geometrik va To‘lqin Optikasi"
+    }
+  ],
+  "lessons": [
+    {
+      "number": "01",
+      "position": 1,
+      "modulePosition": 1,
+      "title": "Fizik kattaliklar, o‘lchash va SI xalqaro birliklar sistemasi"
+    },
+    {
+      "number": "02",
+      "position": 2,
+      "modulePosition": 1,
+      "title": "Moddiy nuqta, sanoq sistemasi va harakatning nisbiyligi"
+    },
+    {
+      "number": "03",
+      "position": 3,
+      "modulePosition": 1,
+      "title": "To‘g‘ri chiziqli tekis harakat, tezlik va ko‘chish"
+    },
+    {
+      "number": "04",
+      "position": 4,
+      "modulePosition": 1,
+      "title": "Tekis o‘zgaruvchan harakat va tezlanish"
+    },
+    {
+      "number": "05",
+      "position": 5,
+      "modulePosition": 1,
+      "title": "Erkin tushish harakati va og‘irlik kuchi tezlanishi"
+    },
+    {
+      "number": "06",
+      "position": 6,
+      "modulePosition": 1,
+      "title": "Nyutonning birinchi qonuni va inersiya hodisasi"
+    },
+    {
+      "number": "07",
+      "position": 7,
+      "modulePosition": 1,
+      "title": "Kuch, massa va Nyutonning ikkinchi qonuni"
+    },
+    {
+      "number": "08",
+      "position": 8,
+      "modulePosition": 1,
+      "title": "Nyutonning uchinchi qonuni: Ta’sir va aks ta’sir"
+    },
+    {
+      "number": "09",
+      "position": 9,
+      "modulePosition": 1,
+      "title": "Butun olam tortishish qonuni va jism og‘irligi"
+    },
+    {
+      "number": "10",
+      "position": 10,
+      "modulePosition": 1,
+      "title": "Tinchlikdagi va sirpanishdagi ishqalanish kuchi"
+    },
+    {
+      "number": "11",
+      "position": 11,
+      "modulePosition": 1,
+      "title": "Qattiq jismlar, suyuqlik va gazlarda bosim"
+    },
+    {
+      "number": "12",
+      "position": 12,
+      "modulePosition": 1,
+      "title": "Oddiy mexanizmlar: Richag, blok va qiya tekislik"
+    },
+    {
+      "number": "13",
+      "position": 13,
+      "modulePosition": 1,
+      "title": "Mexanik ish, quvvat va foydali ish koeffitsienti"
+    },
+    {
+      "number": "14",
+      "position": 14,
+      "modulePosition": 1,
+      "title": "Kinetik va potensial energiya. Energiyaning saqlanish qonuni"
+    },
+    {
+      "number": "15",
+      "position": 15,
+      "modulePosition": 1,
+      "title": "Mexanik tebranishlar, mayatniklar va rezonans hodisasi"
+    },
+    {
+      "number": "16",
+      "position": 16,
+      "modulePosition": 1,
+      "title": "1-Chorak Nazorati: Mexanika sinov testi va virtual laboratoriya topshirig‘i"
+    },
+    {
+      "number": "17",
+      "position": 17,
+      "modulePosition": 2,
+      "title": "Moddaning atom-molekulyar tuzilishi va Broun harakati"
+    },
+    {
+      "number": "18",
+      "position": 18,
+      "modulePosition": 2,
+      "title": "Moddaning agregat holatlari: Qattiq, suyuq, gaz va plazma"
+    },
+    {
+      "number": "19",
+      "position": 19,
+      "modulePosition": 2,
+      "title": "Harorat, issiqlik muvozanati va harorat shkalalari"
+    },
+    {
+      "number": "20",
+      "position": 20,
+      "modulePosition": 2,
+      "title": "Gazlarning molekulyar-kinetik nazariyasi va gaz bosimi"
+    },
+    {
+      "number": "21",
+      "position": 21,
+      "modulePosition": 2,
+      "title": "Issiqlik uzatish turlari: Issiqlik o‘tkazuvchanlik, konveksiya va nurlanish"
+    },
+    {
+      "number": "22",
+      "position": 22,
+      "modulePosition": 2,
+      "title": "Jismlarning issiqlikdan kengayishi"
+    },
+    {
+      "number": "23",
+      "position": 23,
+      "modulePosition": 2,
+      "title": "Solishtirma issiqlik sig‘imi va issiqlik miqdori hisobi"
+    },
+    {
+      "number": "24",
+      "position": 24,
+      "modulePosition": 2,
+      "title": "Erish va qotish jarayonlari. Solishtirma erish issiqligi"
+    },
+    {
+      "number": "25",
+      "position": 25,
+      "modulePosition": 2,
+      "title": "Bug‘lanish, kondensatsiya va qaynash hodisasi"
+    },
+    {
+      "number": "26",
+      "position": 26,
+      "modulePosition": 2,
+      "title": "Havoning namligi va uni o‘lchash asboblari"
+    },
+    {
+      "number": "27",
+      "position": 27,
+      "modulePosition": 2,
+      "title": "Termodinamikaning birinchi qonuni va ichki energiya"
+    },
+    {
+      "number": "28",
+      "position": 28,
+      "modulePosition": 2,
+      "title": "Issiqlik dvigatellari va ularning foydali ish koeffitsienti"
+    },
+    {
+      "number": "29",
+      "position": 29,
+      "modulePosition": 2,
+      "title": "Sovutgich va konditsionerlarning ishlash prinsipi"
+    },
+    {
+      "number": "30",
+      "position": 30,
+      "modulePosition": 2,
+      "title": "2-Chorak Nazorati: Molekulyar fizika va issiqlik jarayonlari imtihoni"
+    },
+    {
+      "number": "31",
+      "position": 31,
+      "modulePosition": 3,
+      "title": "Elektr zaryadi, zaryadning saqlanish qonuni va elektrlanish"
+    },
+    {
+      "number": "32",
+      "position": 32,
+      "modulePosition": 3,
+      "title": "Kulon qonuni: Nuqtaviy zaryadlarning o‘zaro ta’siri"
+    },
+    {
+      "number": "33",
+      "position": 33,
+      "modulePosition": 3,
+      "title": "O‘tkazgichlar, yarimo‘tkazgichlar va dielektriklar"
+    },
+    {
+      "number": "34",
+      "position": 34,
+      "modulePosition": 3,
+      "title": "Elektr maydon kuchlanganligi va potensiali"
+    },
+    {
+      "number": "35",
+      "position": 35,
+      "modulePosition": 3,
+      "title": "Elektr toki, tok kuchi va kuchlanish tushunchasi"
+    },
+    {
+      "number": "36",
+      "position": 36,
+      "modulePosition": 3,
+      "title": "O‘tkazgichning elektr qarshiligi va solishtirma qarshilik"
+    },
+    {
+      "number": "37",
+      "position": 37,
+      "modulePosition": 3,
+      "title": "Zanjir qismi uchun Om qonuni"
+    },
+    {
+      "number": "38",
+      "position": 38,
+      "modulePosition": 3,
+      "title": "O‘tkazgichlarni ketma-ket ulash qonuniyatlari"
+    },
+    {
+      "number": "39",
+      "position": 39,
+      "modulePosition": 3,
+      "title": "O‘tkazgichlarni parallel ulash qonuniyatlari"
+    },
+    {
+      "number": "40",
+      "position": 40,
+      "modulePosition": 3,
+      "title": "Elektr toki bajargan ish va quvvat. Joul-Lens qonuni"
+    },
+    {
+      "number": "41",
+      "position": 41,
+      "modulePosition": 3,
+      "title": "Kimyoviy tok manbalari: Batareyalar va litiy-ion akkumulyatorlar"
+    },
+    {
+      "number": "42",
+      "position": 42,
+      "modulePosition": 3,
+      "title": "Doimiy magnitlar, magnit qutblari va magnit maydon chiziqlari"
+    },
+    {
+      "number": "43",
+      "position": 43,
+      "modulePosition": 3,
+      "title": "Yerning magnit maydoni va kompas"
+    },
+    {
+      "number": "44",
+      "position": 44,
+      "modulePosition": 3,
+      "title": "Tokli o‘tkazgich hosil qilgan magnit maydon. Ersted tajribasi"
+    },
+    {
+      "number": "45",
+      "position": 45,
+      "modulePosition": 3,
+      "title": "Elektromagnitlar va ularning texnikada qo‘llanilishi"
+    },
+    {
+      "number": "46",
+      "position": 46,
+      "modulePosition": 3,
+      "title": "Magnit maydonida harakatlanayotgan zaryadga ta’sir etuvchi Lorens kuchi"
+    },
+    {
+      "number": "47",
+      "position": 47,
+      "modulePosition": 3,
+      "title": "Tokli o‘tkazgichga magnit maydonining ta’siri (Amper kuchi) va elektr motorlar"
+    },
+    {
+      "number": "48",
+      "position": 48,
+      "modulePosition": 3,
+      "title": "Elektromagnit induksiya hodisasi va Faradey qonuni"
+    },
+    {
+      "number": "49",
+      "position": 49,
+      "modulePosition": 3,
+      "title": "Doimiy (DC) va o‘zgaruvchan (AC) tok asoslari"
+    },
+    {
+      "number": "50",
+      "position": 50,
+      "modulePosition": 3,
+      "title": "Transformatorlar va elektr energiyasini uzoq masofaga uzatish"
+    },
+    {
+      "number": "51",
+      "position": 51,
+      "modulePosition": 3,
+      "title": "Inson organizmi orqali o‘tuvchi elektr toki va xavfsizlik texnikasi"
+    },
+    {
+      "number": "52",
+      "position": 52,
+      "modulePosition": 3,
+      "title": "3-Chorak Nazorati: Murakkab zanjirlarni hisoblash va virtual podstansiya laboratoriyasi"
+    },
+    {
+      "number": "53",
+      "position": 53,
+      "modulePosition": 4,
+      "title": "Atom tuzilishi: Tomson modeli va Rezerford tajribasi"
+    },
+    {
+      "number": "54",
+      "position": 54,
+      "modulePosition": 4,
+      "title": "Atom yadrosining tarkibi: Protonlar, neytronlar va kuchli yadro kuchlari"
+    },
+    {
+      "number": "55",
+      "position": 55,
+      "modulePosition": 4,
+      "title": "Kimyoviy elementlarning izotoplari va yadro massasi"
+    },
+    {
+      "number": "56",
+      "position": 56,
+      "modulePosition": 4,
+      "title": "Tabiiy radioaktivlik: Bekkerel va Kyuri kashfiyoti"
+    },
+    {
+      "number": "57",
+      "position": 57,
+      "modulePosition": 4,
+      "title": "Nurlanish turlari: Alfa, beta va gamma nurlar hamda ularning o‘tuvchanlik qobiliyati"
+    },
+    {
+      "number": "58",
+      "position": 58,
+      "modulePosition": 4,
+      "title": "Radioaktiv yemirilish qonuni va yarim yemirilish davri"
+    },
+    {
+      "number": "59",
+      "position": 59,
+      "modulePosition": 4,
+      "title": "Atom yadrosining bog‘lanish energiyasi va massa defekti (E=mc²)"
+    },
+    {
+      "number": "60",
+      "position": 60,
+      "modulePosition": 4,
+      "title": "Og‘ir yadrolarning bo‘linishi va zanjirli yadro reaksiyasi"
+    },
+    {
+      "number": "61",
+      "position": 61,
+      "modulePosition": 4,
+      "title": "Atom elektr stansiyalari (AES): Issiqlik reaktorining ishlash mexanizmi"
+    },
+    {
+      "number": "62",
+      "position": 62,
+      "modulePosition": 4,
+      "title": "Boshqariladigan termoyadro sintezi: Quyosh energiyasining siri"
+    },
+    {
+      "number": "63",
+      "position": 63,
+      "modulePosition": 4,
+      "title": "Radiatsiyaning tibbiyot va qishloq xo‘jaligidagi amaliy qo‘llanilishi"
+    },
+    {
+      "number": "64",
+      "position": 64,
+      "modulePosition": 4,
+      "title": "4-Chorak Nazorati: Atom fizikasi imtihoni va reaktor simulyatsiyasi"
+    },
+    {
+      "number": "65",
+      "position": 65,
+      "modulePosition": 5,
+      "title": "Yorug‘lik tabiati: Yorug‘lik manbalari va yorug‘lik tezligi"
+    },
+    {
+      "number": "66",
+      "position": 66,
+      "modulePosition": 5,
+      "title": "Yorug‘likning to‘g‘ri chiziq bo‘ylab tarqalishi: Soya va nimsoya"
+    },
+    {
+      "number": "67",
+      "position": 67,
+      "modulePosition": 5,
+      "title": "Quyosh va Oy tutilishi hodisalari"
+    },
+    {
+      "number": "68",
+      "position": 68,
+      "modulePosition": 5,
+      "title": "Yorug‘likning qaytish qonuni va yassi ko‘zguda tasvir yasash"
+    },
+    {
+      "number": "69",
+      "position": 69,
+      "modulePosition": 5,
+      "title": "Sferik ko‘zgular: Qavariq va botiq ko‘zgular"
+    },
+    {
+      "number": "70",
+      "position": 70,
+      "modulePosition": 5,
+      "title": "Yorug‘likning ikki muhit chegarasida sinishi va sinish qonuni"
+    },
+    {
+      "number": "71",
+      "position": 71,
+      "modulePosition": 5,
+      "title": "To‘liq ichki qaytish hodisasi va optik tolali aloqa"
+    },
+    {
+      "number": "72",
+      "position": 72,
+      "modulePosition": 5,
+      "title": "Yupqa linzalar: Yig‘uvchi va sochuvchi linzalar xossalari"
+    },
+    {
+      "number": "73",
+      "position": 73,
+      "modulePosition": 5,
+      "title": "Yupqa linza formulasi va optik kuch (dioptriya)"
+    },
+    {
+      "number": "74",
+      "position": 74,
+      "modulePosition": 5,
+      "title": "Ko‘z optik sistema sifatida: Yaqindan va uzoqdan ko‘rish nuqsonlari"
+    },
+    {
+      "number": "75",
+      "position": 75,
+      "modulePosition": 5,
+      "title": "Murakkab optik asboblar: Mikroskop va teleskoplar"
+    },
+    {
+      "number": "76",
+      "position": 76,
+      "modulePosition": 5,
+      "title": "Yorug‘lik dispersiyasi: Nyuton tajribasi va kamalakning hosil bo‘lishi"
+    },
+    {
+      "number": "77",
+      "position": 77,
+      "modulePosition": 5,
+      "title": "Yorug‘lik to‘lqinlarining interferensiyasi va difraksiyasi haqida tushuncha"
+    },
+    {
+      "number": "78",
+      "position": 78,
+      "modulePosition": 5,
+      "title": "Katta Yakuniy Sertifikat Imtihoni: Barcha 5 chorak bo‘yicha nazorat va integratsiyalashgan loyiha"
+    }
+  ],
+  "lessonContent": {
+    "01": {
+      "intro": "Fizik kattaliklar, o‘lchash va Xalqaro birliklar sistemasi (SI) bilan tanishamiz.",
+      "videoUrl": null,
+      "videoDurationMin": null,
+      "homeworkTitle": "Mashqlarni bajaring va o‘zingizni tekshiring",
+      "homeworkBody": "Quyidagi mashqlar javobini shu yerda darhol tekshirishingiz mumkin. PDF ichida to‘liq mashqlar berilgan.",
+      "homeworkPdfUrl": "/materials/ilk-qadam/01-uyga-vazifa.pdf",
+      "quiz": [
+        {
+          "position": 1,
+          "question": "SI sistemasida uzunlikning asosiy birligi qaysi?",
+          "explanation": "Uzunlikning SI asosiy birligi — metr (m). Kilometr va santimetr metrdan prefiks yordamida hosil qilingan.",
+          "options": [
+            {
+              "position": 1,
+              "label": "metr",
+              "isCorrect": true
+            },
+            {
+              "position": 2,
+              "label": "kilometr",
+              "isCorrect": false
+            },
+            {
+              "position": 3,
+              "label": "santimetr",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "position": 2,
+          "question": "2,5 km necha metr?",
+          "explanation": "1 km = 1000 m, demak 2,5 × 1000 = 2500 m.",
+          "options": [
+            {
+              "position": 1,
+              "label": "250 m",
+              "isCorrect": false
+            },
+            {
+              "position": 2,
+              "label": "2500 m",
+              "isCorrect": true
+            },
+            {
+              "position": 3,
+              "label": "25 000 m",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "position": 3,
+          "question": "Quyidagilardan qaysi biri SI ning asosiy birligi EMAS?",
+          "explanation": "Nyuton — hosilaviy birlik: 1 N = 1 kg·m/s². Kelvin va kandela esa 7 ta asosiy birlik qatoriga kiradi.",
+          "options": [
+            {
+              "position": 1,
+              "label": "kelvin",
+              "isCorrect": false
+            },
+            {
+              "position": 2,
+              "label": "nyuton",
+              "isCorrect": true
+            },
+            {
+              "position": 3,
+              "label": "kandela",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "position": 4,
+          "question": "1 m² necha sm² ga teng?",
+          "explanation": "1 m = 100 sm, yuzada ko‘paytuvchi kvadratga ko‘tariladi: 100² = 10 000 sm². Bu eng ko‘p uchraydigan xato.",
+          "options": [
+            {
+              "position": 1,
+              "label": "100 sm²",
+              "isCorrect": false
+            },
+            {
+              "position": 2,
+              "label": "1000 sm²",
+              "isCorrect": false
+            },
+            {
+              "position": 3,
+              "label": "10 000 sm²",
+              "isCorrect": true
+            }
+          ]
+        },
+        {
+          "position": 5,
+          "question": "Quyidagi kattaliklardan qaysi biri vektor?",
+          "explanation": "Kuchni to‘liq ifodalash uchun yo‘nalish ham kerak — demak u vektor. Massa va harorat esa skalyar kattaliklar.",
+          "options": [
+            {
+              "position": 1,
+              "label": "Massa",
+              "isCorrect": false
+            },
+            {
+              "position": 2,
+              "label": "Kuch",
+              "isCorrect": true
+            },
+            {
+              "position": 3,
+              "label": "Harorat",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "position": 6,
+          "question": "750 sm necha metr?",
+          "explanation": "1 m = 100 sm, shuning uchun 750 ÷ 100 = 7,5 m. Kichikdan kattaga o‘tayotganda bo‘lamiz.",
+          "options": [
+            {
+              "position": 1,
+              "label": "0,75 m",
+              "isCorrect": false
+            },
+            {
+              "position": 2,
+              "label": "7,5 m",
+              "isCorrect": true
+            },
+            {
+              "position": 3,
+              "label": "75 m",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "position": 7,
+          "question": "Qaysi yozuv fizik kattalikni to‘liq ifodalaydi?",
+          "explanation": "Fizik kattalik son qiymati va birlikdan iborat. Yolg‘iz son yoki yolg‘iz birlik yetarli emas.",
+          "options": [
+            {
+              "position": 1,
+              "label": "12",
+              "isCorrect": false
+            },
+            {
+              "position": 2,
+              "label": "12 metr",
+              "isCorrect": true
+            },
+            {
+              "position": 3,
+              "label": "metr",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "position": 8,
+          "question": "0,00000045 m ni ilmiy yozuvda qanday ifodalaymiz?",
+          "explanation": "Ilmiy yozuvda birinchi ko‘paytuvchi 1 dan 10 gacha bo‘lishi shart. Vergul 7 xona o‘ngga surilgani uchun daraja −7.",
+          "options": [
+            {
+              "position": 1,
+              "label": "45 × 10⁻⁸ m",
+              "isCorrect": false
+            },
+            {
+              "position": 2,
+              "label": "4,5 × 10⁻⁷ m",
+              "isCorrect": true
+            },
+            {
+              "position": 3,
+              "label": "4,5 × 10⁷ m",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "position": 9,
+          "question": "Lineykada 0 va 2 sm orasida 20 ta bo‘linma bor. Bo‘linish qiymati qancha?",
+          "explanation": "2 sm ÷ 20 bo‘linma = 0,1 sm = 1 mm. Bo‘linish qiymati = qiymatlar farqi ÷ bo‘linmalar soni.",
+          "options": [
+            {
+              "position": 1,
+              "label": "1 mm",
+              "isCorrect": true
+            },
+            {
+              "position": 2,
+              "label": "2 mm",
+              "isCorrect": false
+            },
+            {
+              "position": 3,
+              "label": "0,5 mm",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "position": 10,
+          "question": "«Milli» prefiksi birlikni nechaga ko‘paytiradi?",
+          "explanation": "milli = 10⁻³, ya’ni mingdan bir. 10⁻² — santi, 10⁻⁶ — mikro.",
+          "options": [
+            {
+              "position": 1,
+              "label": "10⁻²",
+              "isCorrect": false
+            },
+            {
+              "position": 2,
+              "label": "10⁻³",
+              "isCorrect": true
+            },
+            {
+              "position": 3,
+              "label": "10⁻⁶",
+              "isCorrect": false
+            }
+          ]
+        }
+      ],
+      "practice": [
+        {
+          "position": 1,
+          "prompt": "3,6 km ni metrga aylantiring.",
+          "unit": "m",
+          "answer": 3600,
+          "tolerance": 0.5,
+          "hint": "1 km = 1000 m. Kattadan kichikka o‘tyapsiz — ko‘paytiring.",
+          "solution": "3,6 × 1000 = 3600 m"
+        },
+        {
+          "position": 2,
+          "prompt": "2500 g necha kilogramm?",
+          "unit": "kg",
+          "answer": 2.5,
+          "tolerance": 0.01,
+          "hint": "1 kg = 1000 g. Kichikdan kattaga o‘tyapsiz — bo‘ling.",
+          "solution": "2500 ÷ 1000 = 2,5 kg"
+        },
+        {
+          "position": 3,
+          "prompt": "1,5 soat necha sekund?",
+          "unit": "s",
+          "answer": 5400,
+          "tolerance": 0.5,
+          "hint": "1 soat = 60 min, 1 min = 60 s. Demak 1 soat = 3600 s.",
+          "solution": "1,5 × 3600 = 5400 s"
+        },
+        {
+          "position": 4,
+          "prompt": "72 km/soat tezlikni m/s ga aylantiring.",
+          "unit": "m/s",
+          "answer": 20,
+          "tolerance": 0.05,
+          "hint": "72 km = 72 000 m, 1 soat = 3600 s. Yoki qisqa yo‘l: 3,6 ga bo‘ling.",
+          "solution": "72 000 ÷ 3600 = 20 m/s  (yoki 72 ÷ 3,6 = 20)"
+        },
+        {
+          "position": 5,
+          "prompt": "2,5 m² necha sm² ga teng?",
+          "unit": "sm²",
+          "answer": 25000,
+          "tolerance": 1,
+          "hint": "1 m = 100 sm, lekin yuzada ko‘paytuvchi kvadratga ko‘tariladi: 100² = 10 000.",
+          "solution": "2,5 × 10 000 = 25 000 sm²"
+        }
+      ]
+    }
+  }
+}

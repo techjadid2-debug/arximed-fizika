@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Atom } from "lucide-react";
 
+import { ProgressBadges } from "@/components/navigation/ProgressBadges";
 import { LanguageSwitcher, MobileLanguageLink, ThemeToggle } from "@/components/navigation/SiteControls";
 import { type Locale, ui } from "@/lib/i18n";
 
@@ -19,6 +20,7 @@ export function SiteHeader({ locale }: { locale: Locale }) {
           <Link href={`/${locale}/courses`} className="hidden rounded-md px-4 py-2 text-sm text-muted-foreground transition hover:bg-accent hover:text-accent-foreground sm:block">
             {copy.courses}
           </Link>
+          <ProgressBadges />
           <LanguageSwitcher locale={locale} />
           <MobileLanguageLink locale={locale} />
           <ThemeToggle />
