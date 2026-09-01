@@ -165,10 +165,11 @@ create policy courses_read on public.courses for select using (true);
 drop policy if exists modules_read on public.modules;
 create policy modules_read on public.modules for select using (true);
 
--- Darslar: chop etilganlar hammaga, qolgani faqat adminga
+-- Dars SARLAVHALARI hammaga ochiq — o'quvchi kursning to'liq hajmini
+-- (78 dars, 5 chorak) qulflangan darslar bilan birga ko'radi.
+-- Dars ICHIDAGI kontent (quiz, mashqlar) quyida himoyalangan.
 drop policy if exists lessons_read on public.lessons;
-create policy lessons_read on public.lessons for select
-  using (is_published or public.is_admin());
+create policy lessons_read on public.lessons for select using (true);
 
 -- Quiz va mashqlar: darsi ko'rinadigan bo'lsa ko'rinadi
 drop policy if exists quiz_questions_read on public.quiz_questions;
