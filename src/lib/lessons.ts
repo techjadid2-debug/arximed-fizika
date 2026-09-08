@@ -66,87 +66,106 @@ function toPractice(rows: PracticeRow[]): PracticeTask[] {
 }
 
 export async function getCourse(slug: string): Promise<Course | null> {
-  const supabase = await createSupabaseServerClient();
+  const supabase = await createSupabaseServerClient().catch(() => null);
   if (!supabase) return null;
 
-  const { data, error } = await supabase
-    .from("courses")
-    .select(
-      `id, slug, title, description,
-       modules ( id, position, title ),
-       lessons ( id, number, position, title, module_id, video_url, is_published )`,
-    )
-    .eq("slug", slug)
-    .maybeSingle();
+  try {
+    const timeoutPromise = new Promise<null>((resolve) => setTimeout(() => resolve(null), 500));
+    const queryPromise = supabase
+      .from("courses")
+      .select(
+        `id, slug, title, description,
+         modules ( id, position, title ),
+         lessons ( id, number, position, title, module_id, video_url, is_published )`,
+      )
+      .eq("slug", slug)
+      .maybeSingle()
+      .then(({ data, error }) => (error || !data ? null : data));
 
-  if (error || !data) return null;
+    const data = await Promise.race([queryPromise, timeoutPromise]);
+    if (!data) return null;
 
-  const lessons: LessonSummary[] = byPosition(
-    (data.lessons ?? []) as {
-      id: string;
-      number: string;
-      position: number;
-      title: string;
-      module_id: string | null;
-      video_url: string | null;
-      is_published: boolean;
-    }[],
-  ).map((row) => ({
-    id: row.id,
-    number: row.number,
-    position: row.position,
-    title: row.title,
-    moduleId: row.module_id,
-    hasVideo: Boolean(row.video_url),
-    isPublished: row.is_published,
-  }));
+    const lessons: LessonSummary[] = byPosition(
+      (data.lessons ?? []) as {
+        id: string;
+        number: string;
+        position: number;
+        title: string;
+        module_id: string | null;
+        video_url: string | null;
+        is_published: boolean;
+      }[],
+    ).map((row) => ({
+      id: row.id,
+      number: row.number,
+      position: row.position,
+      title: row.title,
+      moduleId: row.module_id,
+      hasVideo: Boolean(row.video_url),
+      isPublished: row.is_published,
+    }));
 
-  return {
-    id: data.id,
-    slug: data.slug,
-    title: data.title,
-    description: data.description,
-    modules: byPosition((data.modules ?? []) as { id: string; position: number; title: string }[]),
-    lessons,
-  };
+    return {
+      id: data.id,
+      slug: data.slug,
+      title: data.title,
+      description: data.description,
+      modules: byPosition((data.modules ?? []) as { id: string; position: number; title: string }[]),
+      lessons,
+    };
+  } catch {
+    return null;
+  }
 }
 
 export async function getLesson(courseSlug: string, number: string): Promise<Lesson | null> {
+  // 1. Agar dars statik ma'lumotlarda mavjud bo'lsa (masalan 01, 02), uni DARHOL qaytaramiz (0ms!)
+  const staticLesson = getStaticLesson(courseSlug, number);
+  if (staticLesson) return staticLesson;
+
   const supabase = await createSupabaseServerClient().catch(() => null);
-  if (!supabase) return getStaticLesson(courseSlug, number);
+  if (!supabase) return null;
 
-  const { data, error } = await supabase
-    .from("lessons")
-    .select(
-      `id, number, position, title, intro, video_url, video_duration_min,
-       homework_title, homework_body, homework_pdf_url, is_published,
-       courses!inner ( slug ),
-       quiz_questions ( id, position, question, explanation,
-                        quiz_options ( id, position, label, is_correct ) ),
-       practice_tasks ( id, position, prompt, unit, answer, tolerance, hint, solution )`,
-    )
-    .eq("courses.slug", courseSlug)
-    .eq("number", number)
-    .maybeSingle();
+  try {
+    const timeoutPromise = new Promise<null>((resolve) => setTimeout(() => resolve(null), 500));
+    const queryPromise = supabase
+      .from("lessons")
+      .select(
+        `id, number, position, title, intro, video_url, video_duration_min,
+         homework_title, homework_body, homework_pdf_url, is_published,
+         courses!inner ( slug ),
+         quiz_questions ( id, position, question, explanation,
+                          quiz_options ( id, position, label, is_correct ) ),
+         practice_tasks ( id, position, prompt, unit, answer, tolerance, hint, solution )`,
+      )
+      .eq("courses.slug", courseSlug)
+      .eq("number", number)
+      .maybeSingle()
+      .then(({ data, error }) => (error || !data ? null : data));
 
-  if (error || !data) return getStaticLesson(courseSlug, number);
+    const data = await Promise.race([queryPromise, timeoutPromise]);
+    if (!data) return null;
 
-  return {
-    id: data.id,
-    courseSlug,
-    number: data.number,
-    position: data.position,
-    title: data.title,
-    intro: data.intro,
-    videoUrl: data.video_url,
-    videoDurationMin: data.video_duration_min,
-    quiz: toQuiz((data.quiz_questions ?? []) as unknown as QuestionRow[]),
-    practice: toPractice((data.practice_tasks ?? []) as unknown as PracticeRow[]),
-    homework: {
-      title: data.homework_title,
-      body: data.homework_body,
-      pdfUrl: data.homework_pdf_url,
-    },
-    isPublished: data.is_published,
-  };
+    return {
+      id: data.id,
+      courseSlug,
+      number: data.number,
+      position: data.position,
+      title: data.title,
+      intro: data.intro,
+      videoUrl: data.video_url,
+      videoDurationMin: data.video_duration_min,
+      quiz: toQuiz((data.quiz_questions ?? []) as unknown as QuestionRow[]),
+      practice: toPractice((data.practice_tasks ?? []) as unknown as PracticeRow[]),
+      homework: {
+        title: data.homework_title,
+        body: data.homework_body,
+        pdfUrl: data.homework_pdf_url,
+      },
+      isPublished: data.is_published,
+    };
+  } catch {
+    return null;
+  }
 }
+

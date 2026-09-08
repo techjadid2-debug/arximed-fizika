@@ -43,9 +43,8 @@ export default async function IlkQadamRoadmapPage({
   const { locale: rawLocale } = await params;
   if (!isLocale(rawLocale)) notFound();
 
-  // Baza orqali olishga urinish, bo‘lmasa to‘liq statik ma’lumot bilan ochish
-  const dbCourse = await getCourse("ilk-qadam").catch(() => null);
-  const course = dbCourse && dbCourse.lessons.length > 0 ? dbCourse : getStaticIlkQadamCourse();
+  // 78 darslik yo‘l xaritasi statik ma’lumotlar asosida bir zumda (0ms) ochiladi
+  const course = getStaticIlkQadamCourse();
 
   return <CourseRoadmap course={course} locale={rawLocale as Locale} />;
 }
