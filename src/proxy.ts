@@ -70,8 +70,5 @@ export async function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: [
-    // Statik fayllar va rasmlardan tashqari hammasi — sessiya yangilanishi uchun.
-    "/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp|pdf)$).*)",
-  ],
+  matcher: ["/admin/:path*"],
 };
