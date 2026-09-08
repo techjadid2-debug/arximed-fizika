@@ -1,9 +1,10 @@
 "use client";
 
 import { BookOpen, Check, CheckCircle2, ChevronRight, Download, FileText, FlaskConical, PlayCircle, Sparkles, XCircle } from "lucide-react";
+import Link from "next/link";
 import { useCallback, useEffect, useMemo } from "react";
 
-import { MeasurementLab } from "@/components/learn/labs/MeasurementLab";
+import { getLessonLab, hasLessonLab } from "@/components/learn/labs";
 import { LessonSlideDeck } from "@/components/learn/LessonSlideDeck";
 import { LessonStages, STAGE_IDS, type StageId } from "@/components/learn/LessonStages";
 import { MathContent } from "@/components/learn/MathContent";
@@ -168,27 +169,30 @@ export function LessonShell({
       {/* ── 01 Nazariya / Slaydlar / Video ───────────────────────────────── */}
       {activeStage === "video" && (
         <section className="mt-7 space-y-6">
-          {lesson.number === "01" ? (
+          {hasLessonLab(lesson.number) || lesson.number === "01" || lesson.number === "02" ? (
             <Tabs defaultValue="slides" className="w-full">
               <div className="flex items-center justify-between">
                 <TabsList className="min-h-10">
                   <TabsTrigger value="slides" className="text-xs sm:text-sm">
                     <BookOpen className="mr-1.5 size-3.5" />
-                    {locale === "uz" ? "Slaydlar (12 ta)" : locale === "en" ? "Slides (12)" : "Слайды (12)"}
+                    {locale === "uz" ? "Slaydlar" : locale === "en" ? "Slides" : "Слайды"}
                   </TabsTrigger>
+                  {hasLessonLab(lesson.number) && (
+                    <TabsTrigger value="lab" className="text-xs sm:text-sm">
+                      <FlaskConical className="mr-1.5 size-3.5" />
+                      {locale === "uz" ? "Laboratoriya" : locale === "en" ? "Virtual Lab" : "Лаборатория"}
+                    </TabsTrigger>
+                  )}
                   <TabsTrigger value="video" className="text-xs sm:text-sm">
                     <PlayCircle className="mr-1.5 size-3.5" />
                     {locale === "uz" ? "Video dars" : locale === "en" ? "Video Lesson" : "Видеоурок"}
-                  </TabsTrigger>
-                  <TabsTrigger value="lab" className="text-xs sm:text-sm">
-                    <FlaskConical className="mr-1.5 size-3.5" />
-                    {locale === "uz" ? "Laboratoriya" : locale === "en" ? "Virtual Lab" : "Лаборатория"}
                   </TabsTrigger>
                 </TabsList>
               </div>
 
               <TabsContent value="slides" className="mt-4">
                 <LessonSlideDeck
+                  lessonNumber={lesson.number}
                   locale={locale}
                   onComplete={() => {
                     if (!completed.video) {
@@ -199,12 +203,14 @@ export function LessonShell({
                 />
               </TabsContent>
 
+              {hasLessonLab(lesson.number) && (
+                <TabsContent value="lab" className="mt-4">
+                  {getLessonLab(lesson.number, locale)}
+                </TabsContent>
+              )}
+
               <TabsContent value="video" className="mt-4">
                 <VideoPlayer url={lesson.videoUrl} title={lesson.title} emptyLabel={t.soon} />
-              </TabsContent>
-
-              <TabsContent value="lab" className="mt-4">
-                <MeasurementLab locale={locale} />
               </TabsContent>
             </Tabs>
           ) : (
@@ -416,9 +422,27 @@ export function LessonShell({
               )}
 
               {lessonDone && (
-                <div className="mt-6 flex items-center gap-2.5 rounded-lg border border-emerald-500/30 bg-emerald-500/10 p-4 font-mono text-xs text-emerald-950 dark:text-emerald-200">
-                  <Sparkles className="size-4 text-emerald-500" />
-                  <span className="font-medium">{t.lessonDoneSuccess}</span>
+                <div className="mt-6 flex flex-wrap items-center justify-between gap-4 rounded-xl border border-emerald-500/30 bg-emerald-500/10 p-4">
+                  <div className="flex items-center gap-2.5 font-mono text-xs text-emerald-950 dark:text-emerald-200">
+                    <Sparkles className="size-4 text-emerald-500" />
+                    <span className="font-semibold">{t.lessonDoneSuccess}</span>
+                  </div>
+                  {parseInt(lesson.number, 10) < 78 && (
+                    <Link
+                      href={`/${locale}/learn/${lesson.courseSlug}/${String(parseInt(lesson.number, 10) + 1).padStart(2, "0")}`}
+                    >
+                      <Button size="sm" className="gap-1.5 bg-emerald-600 text-white hover:bg-emerald-700 text-xs">
+                        <span>
+                          {locale === "uz"
+                            ? `Keyingi dars: ${String(parseInt(lesson.number, 10) + 1).padStart(2, "0")}`
+                            : locale === "en"
+                              ? `Next lesson: ${String(parseInt(lesson.number, 10) + 1).padStart(2, "0")}`
+                              : `Следующий урок: ${String(parseInt(lesson.number, 10) + 1).padStart(2, "0")}`}
+                        </span>
+                        <ChevronRight className="size-3.5" />
+                      </Button>
+                    </Link>
+                  )}
                 </div>
               )}
 

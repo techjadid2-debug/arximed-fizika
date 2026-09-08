@@ -1,5 +1,5 @@
 import type { Locale } from "@/lib/i18n";
-import type { PracticeTask, QuizQuestion } from "@/types/lesson";
+import type { Lesson, PracticeTask, QuizQuestion } from "@/types/lesson";
 
 export interface LessonSlide {
   id: number;
@@ -547,3 +547,23 @@ export const lesson01Practice: PracticeTask[] = [
     solution: "$P = \\frac{80 \\times 10}{0.04} = 20\\,000\\text{ Pa} = 20\\text{ kPa}$.",
   },
 ];
+
+export const lesson01Static: Lesson = {
+  id: "ilk-qadam-01",
+  courseSlug: "ilk-qadam",
+  number: "01",
+  position: 1,
+  title: "Fizik kattaliklar, o‘lchash va SI xalqaro birliklar sistemasi",
+  intro: "Agar hamma o‘z qarichi bilan o‘lchasa, koinot kemasini qanday quramiz?",
+  videoUrl: null,
+  videoDurationMin: 12,
+  quiz: lesson01Quiz,
+  practice: lesson01Practice,
+  homework: {
+    title: "SI birliklariga o‘tkazish va xatolikni aniqlash",
+    body: "1. Xonangizning bo‘yi va enini o‘lchang.\n2. Shkala bo‘limi qiymati va asbob xatoligini yozing.\n3. Natijani SI (metr)da ifodalang.",
+    pdfUrl: null,
+  },
+  isPublished: true,
+};
+

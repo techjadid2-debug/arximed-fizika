@@ -7,17 +7,25 @@ import { MathContent } from "@/components/learn/MathContent";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
-import { lesson01Slides, type LessonSlide } from "@/data/lessons/ilk-qadam-01";
+import { getLessonSlides } from "@/data/lessons";
+import type { LessonSlide } from "@/data/lessons/ilk-qadam-01";
 import type { Locale } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 
 interface LessonSlideDeckProps {
+  lessonNumber?: string;
+  slides?: LessonSlide[];
   locale?: Locale;
   onComplete?: () => void;
 }
 
-export function LessonSlideDeck({ locale = "uz", onComplete }: LessonSlideDeckProps) {
-  const slides: LessonSlide[] = lesson01Slides[locale] ?? lesson01Slides.uz;
+export function LessonSlideDeck({
+  lessonNumber = "01",
+  slides: explicitSlides,
+  locale = "uz",
+  onComplete,
+}: LessonSlideDeckProps) {
+  const slides: LessonSlide[] = explicitSlides ?? getLessonSlides(lessonNumber, locale);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isExpanded, setIsExpanded] = useState(false);
 

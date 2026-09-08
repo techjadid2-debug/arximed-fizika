@@ -1,5 +1,6 @@
 import "server-only";
 
+import { getStaticLesson } from "@/data/lessons";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import type { Course, Lesson, LessonSummary, PracticeTask, QuizQuestion } from "@/types/lesson";
 
@@ -111,8 +112,8 @@ export async function getCourse(slug: string): Promise<Course | null> {
 }
 
 export async function getLesson(courseSlug: string, number: string): Promise<Lesson | null> {
-  const supabase = await createSupabaseServerClient();
-  if (!supabase) return null;
+  const supabase = await createSupabaseServerClient().catch(() => null);
+  if (!supabase) return getStaticLesson(courseSlug, number);
 
   const { data, error } = await supabase
     .from("lessons")
@@ -128,7 +129,7 @@ export async function getLesson(courseSlug: string, number: string): Promise<Les
     .eq("number", number)
     .maybeSingle();
 
-  if (error || !data) return null;
+  if (error || !data) return getStaticLesson(courseSlug, number);
 
   return {
     id: data.id,
