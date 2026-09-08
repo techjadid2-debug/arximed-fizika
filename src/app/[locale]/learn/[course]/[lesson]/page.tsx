@@ -28,7 +28,7 @@ export default async function LessonPage({
   const lesson = await getLesson(course, number).catch(() => null);
 
   const hasInteractiveContent = Boolean(
-    lesson && (lesson.quiz.length > 0 || lesson.videoUrl || number === "01" || number === "02"),
+    lesson && (lesson.quiz.length > 0 || lesson.videoUrl || ["01", "02", "03", "04", "05"].includes(number)),
   );
 
   return (
