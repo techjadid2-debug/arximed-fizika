@@ -1,8 +1,9 @@
 "use client";
 
-import { BookOpen, Check, CheckCircle2, ChevronRight, Download, FileText, FlaskConical, PlayCircle, Sparkles, XCircle } from "lucide-react";
+import confetti from "canvas-confetti";
+import { BookOpen, Check, CheckCircle2, ChevronRight, Download, FileText, FlaskConical, PlayCircle, Sparkles, Trophy, XCircle } from "lucide-react";
 import Link from "next/link";
-import { useCallback, useEffect, useMemo } from "react";
+import { useCallback, useEffect, useMemo, useRef } from "react";
 
 import { getLessonLab, hasLessonLab } from "@/components/learn/labs";
 import { LessonSlideDeck } from "@/components/learn/LessonSlideDeck";
@@ -15,6 +16,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import type { Locale } from "@/lib/i18n";
+import { playCelebrationSound, playCorrectSound, playWrongSound } from "@/lib/sound";
 import { cn } from "@/lib/utils";
 import { useLessonStore } from "@/store/useLessonStore";
 import { todayKey, useProgressStore, XP } from "@/store/useProgressStore";
@@ -135,8 +137,18 @@ export function LessonShell({
   );
 
   const lessonDone = completed.video && completed.quiz && completed.homework;
+  const celebratedRef = useRef(false);
   useEffect(() => {
-    if (lessonDone) completeLessonXp(lessonId, todayKey());
+    if (lessonDone && !celebratedRef.current) {
+      celebratedRef.current = true;
+      completeLessonXp(lessonId, todayKey());
+      playCelebrationSound();
+      confetti({
+        particleCount: 120,
+        spread: 80,
+        origin: { y: 0.6 },
+      });
+    }
   }, [lessonDone, completeLessonXp, lessonId]);
 
   return (
@@ -171,6 +183,31 @@ export function LessonShell({
         <section className="mt-7 space-y-6">
           {hasLessonLab(lesson.number) || lesson.number === "01" || lesson.number === "02" ? (
             <Tabs defaultValue="slides" className="w-full">
+              {hasLessonLab(lesson.number) && (
+                <div className="mb-4 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-emerald-500/30 bg-gradient-to-r from-emerald-500/10 via-cyan-500/10 to-transparent p-3.5 sm:p-4 shadow-sm">
+                  <div className="flex items-center gap-3">
+                    <div className="grid size-9 shrink-0 place-items-center rounded-lg bg-emerald-500/20 text-emerald-600 dark:text-emerald-400">
+                      <FlaskConical className="size-5" />
+                    </div>
+                    <div>
+                      <p className="text-xs sm:text-sm font-semibold text-foreground">
+                        {locale === "uz"
+                          ? "Ustoz tavsiyasi: Avval Virtual Laboratoriyada tajriba o‘tkazing!"
+                          : locale === "en"
+                            ? "Teacher's Tip: Try the Virtual Lab first!"
+                            : "Совет учителя: Сначала испытайте виртуальную лабораторию!"}
+                      </p>
+                      <p className="text-[11px] sm:text-xs text-muted-foreground">
+                        {locale === "uz"
+                          ? "Fizikani quruq formulalardan oldin o‘z ko‘zingiz bilan ko‘rib, his eting."
+                          : locale === "en"
+                            ? "Experience the physics firsthand before reading the formulas."
+                            : "Почувствуйте физику на реальном опыте до формул."}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              )}
               <div className="flex items-center justify-between">
                 <TabsList className="min-h-10">
                   <TabsTrigger value="slides" className="text-xs sm:text-sm">
@@ -179,8 +216,8 @@ export function LessonShell({
                   </TabsTrigger>
                   {hasLessonLab(lesson.number) && (
                     <TabsTrigger value="lab" className="text-xs sm:text-sm">
-                      <FlaskConical className="mr-1.5 size-3.5" />
-                      {locale === "uz" ? "Laboratoriya" : locale === "en" ? "Virtual Lab" : "Лаборатория"}
+                      <FlaskConical className="mr-1.5 size-3.5 text-emerald-500 animate-pulse" />
+                      {locale === "uz" ? "Virtual Laboratoriya 🧪" : locale === "en" ? "Virtual Lab 🧪" : "Лаборатория 🧪"}
                     </TabsTrigger>
                   )}
                   <TabsTrigger value="video" className="text-xs sm:text-sm">
@@ -296,9 +333,14 @@ export function LessonShell({
                               onClick={() => {
                                 const today = todayKey();
                                 submitQuiz(lessonId, question.id, option.id, option.isCorrect);
-                                if (option.isCorrect && !attempt) award(XP.quizCorrect, today);
-                                if (option.isCorrect) clearMistake(question.id, today);
-                                else recordMistake(lessonId, question.id, "quiz", today);
+                                if (option.isCorrect) {
+                                  playCorrectSound();
+                                  if (!attempt) award(XP.quizCorrect, today);
+                                  clearMistake(question.id, today);
+                                } else {
+                                  playWrongSound();
+                                  recordMistake(lessonId, question.id, "quiz", today);
+                                }
                                 if (answered + (attempt ? 0 : 1) === lesson.quiz.length) {
                                   completeActivity(lessonId, quizActivity);
                                 }
@@ -422,16 +464,35 @@ export function LessonShell({
               )}
 
               {lessonDone && (
-                <div className="mt-6 flex flex-wrap items-center justify-between gap-4 rounded-xl border border-emerald-500/30 bg-emerald-500/10 p-4">
-                  <div className="flex items-center gap-2.5 font-mono text-xs text-emerald-950 dark:text-emerald-200">
-                    <Sparkles className="size-4 text-emerald-500" />
-                    <span className="font-semibold">{t.lessonDoneSuccess}</span>
+                <div className="mt-7 flex flex-col sm:flex-row items-center justify-between gap-5 rounded-2xl border border-emerald-500/40 bg-gradient-to-r from-emerald-500/15 via-emerald-500/5 to-cyan-500/15 p-6 shadow-lg shadow-emerald-500/5">
+                  <div className="flex items-center gap-4">
+                    <div className="grid size-12 shrink-0 place-items-center rounded-xl bg-emerald-500 text-white shadow-md">
+                      <Trophy className="size-6" />
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs font-mono font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
+                          {locale === "uz" ? "Dars muvaffaqiyatli yakunlandi!" : locale === "en" ? "Lesson Completed!" : "Урок пройден!"}
+                        </span>
+                        <span className="inline-flex items-center rounded-full bg-emerald-500/20 px-2 py-0.5 text-xs font-bold text-emerald-700 dark:text-emerald-300">
+                          +50 XP ⚡
+                        </span>
+                      </div>
+                      <p className="mt-1 text-sm font-medium text-foreground">
+                        {locale === "uz"
+                          ? "Ajoyib natija! Siz bugun yana bir muhim qonunni o‘zlashtirdingiz."
+                          : locale === "en"
+                            ? "Great job! You mastered another fundamental law of physics."
+                            : "Отличный результат! Вы освоили ещё один закон физики."}
+                      </p>
+                    </div>
                   </div>
                   {parseInt(lesson.number, 10) < 78 && (
                     <Link
                       href={`/${locale}/learn/${lesson.courseSlug}/${String(parseInt(lesson.number, 10) + 1).padStart(2, "0")}`}
+                      className="w-full sm:w-auto"
                     >
-                      <Button size="sm" className="gap-1.5 bg-emerald-600 text-white hover:bg-emerald-700 text-xs">
+                      <Button size="default" className="w-full sm:w-auto gap-2 bg-emerald-600 text-white hover:bg-emerald-700 font-semibold shadow-md">
                         <span>
                           {locale === "uz"
                             ? `Keyingi dars: ${String(parseInt(lesson.number, 10) + 1).padStart(2, "0")}`
@@ -439,7 +500,7 @@ export function LessonShell({
                               ? `Next lesson: ${String(parseInt(lesson.number, 10) + 1).padStart(2, "0")}`
                               : `Следующий урок: ${String(parseInt(lesson.number, 10) + 1).padStart(2, "0")}`}
                         </span>
-                        <ChevronRight className="size-3.5" />
+                        <ChevronRight className="size-4" />
                       </Button>
                     </Link>
                   )}

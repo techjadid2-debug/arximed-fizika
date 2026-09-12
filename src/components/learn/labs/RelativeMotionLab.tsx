@@ -9,6 +9,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Slider } from "@/components/ui/slider";
 import type { Locale } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
+import confetti from "canvas-confetti";
+import { playCelebrationSound } from "@/lib/sound";
 
 interface RelativeMotionLabProps {
   locale?: Locale;
@@ -20,6 +22,7 @@ export function RelativeMotionLab({ locale = "uz" }: RelativeMotionLabProps) {
   const [currentSpeed, setCurrentSpeed] = useState<number>(2); // m/s
   const [isWithCurrent, setIsWithCurrent] = useState<boolean>(true); // oqim bo'ylab yoki qarshi
   const [isPlaying, setIsPlaying] = useState<boolean>(true);
+  const [hasCelebrated, setHasCelebrated] = useState<boolean>(false);
 
   // Animatsiya pozitsiyalari (0 dan 100% gacha)
   const [boatPos, setBoatPos] = useState<number>(20);
@@ -123,6 +126,20 @@ export function RelativeMotionLab({ locale = "uz" }: RelativeMotionLabProps) {
 
   const isStationaryChallengeMet = !isWithCurrent && Math.abs(netSpeed) < 0.05 && boatSpeed > 0;
 
+  useEffect(() => {
+    if (isStationaryChallengeMet && !hasCelebrated) {
+      setHasCelebrated(true);
+      playCelebrationSound();
+      confetti({
+        particleCount: 60,
+        spread: 60,
+        origin: { y: 0.6 },
+      });
+    } else if (!isStationaryChallengeMet && hasCelebrated) {
+      setHasCelebrated(false);
+    }
+  }, [isStationaryChallengeMet, hasCelebrated]);
+
   return (
     <Card className="overflow-hidden border-border bg-card shadow-sm">
       <CardContent className="p-5 sm:p-6 space-y-6">
@@ -135,9 +152,9 @@ export function RelativeMotionLab({ locale = "uz" }: RelativeMotionLabProps) {
                 Kinematika · Lab 02
               </Badge>
               {isStationaryChallengeMet && (
-                <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/10 px-2.5 py-0.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+                <span className="inline-flex items-center gap-1 rounded-full bg-amber-500/20 px-2.5 py-0.5 text-xs font-bold text-amber-600 dark:text-amber-400 animate-pulse border border-amber-500/30">
                   <Sparkles className="size-3" />
-                  Topshiriq bajarildi!
+                  ⭐⭐⭐ {locale === "uz" ? "Missiya bajarildi! (+25 XP)" : "Mission Accomplished!"}
                 </span>
               )}
             </div>

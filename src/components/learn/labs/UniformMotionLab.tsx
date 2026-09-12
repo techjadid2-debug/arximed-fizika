@@ -9,6 +9,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Slider } from "@/components/ui/slider";
 import type { Locale } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
+import confetti from "canvas-confetti";
+import { playCelebrationSound } from "@/lib/sound";
 
 interface UniformMotionLabProps {
   locale?: Locale;
@@ -17,6 +19,7 @@ interface UniformMotionLabProps {
 export function UniformMotionLab({ locale = "uz" }: UniformMotionLabProps) {
   const [speed, setSpeed] = useState<number>(10); // m/s
   const [isPlaying, setIsPlaying] = useState<boolean>(true);
+  const [hasCelebrated, setHasCelebrated] = useState<boolean>(false);
   const [elapsedTime, setElapsedTime] = useState<number>(0);
   const [distance, setDistance] = useState<number>(0);
   const [carX, setCarX] = useState<number>(5); // 0..90%
@@ -57,6 +60,20 @@ export function UniformMotionLab({ locale = "uz" }: UniformMotionLabProps) {
   };
 
   const isChallengeDone = speed === 20;
+
+  useEffect(() => {
+    if (isChallengeDone && !hasCelebrated) {
+      setHasCelebrated(true);
+      playCelebrationSound();
+      confetti({
+        particleCount: 60,
+        spread: 60,
+        origin: { y: 0.6 },
+      });
+    } else if (!isChallengeDone && hasCelebrated) {
+      setHasCelebrated(false);
+    }
+  }, [isChallengeDone, hasCelebrated]);
 
   const t = {
     title:
@@ -103,9 +120,9 @@ export function UniformMotionLab({ locale = "uz" }: UniformMotionLabProps) {
                 Kinematika · Lab 03
               </Badge>
               {isChallengeDone && (
-                <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/10 px-2.5 py-0.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+                <span className="inline-flex items-center gap-1 rounded-full bg-amber-500/20 px-2.5 py-0.5 text-xs font-bold text-amber-600 dark:text-amber-400 animate-pulse border border-amber-500/30">
                   <Sparkles className="size-3" />
-                  Topshiriq bajarildi!
+                  ⭐⭐⭐ {locale === "uz" ? "Topshiriq bajarildi! (+25 XP)" : "Challenge Completed!"}
                 </span>
               )}
             </div>

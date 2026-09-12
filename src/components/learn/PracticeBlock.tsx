@@ -1,5 +1,6 @@
 "use client";
 
+import confetti from "canvas-confetti";
 import { Check, Lightbulb, X } from "lucide-react";
 import { useState } from "react";
 
@@ -7,6 +8,7 @@ import { MathContent } from "@/components/learn/MathContent";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import type { Locale } from "@/lib/i18n";
+import { playCorrectSound, playWrongSound } from "@/lib/sound";
 import { cn } from "@/lib/utils";
 import { useLessonStore } from "@/store/useLessonStore";
 import type { PracticeTask } from "@/types/lesson";
@@ -27,7 +29,7 @@ export function PracticeBlock({ lessonId, tasks, locale, onResult }: PracticeBlo
 
   const labels = {
     check: locale === "uz" ? "Tekshirish" : locale === "en" ? "Check" : "Проверить",
-    correct: locale === "uz" ? "To‘g‘ri" : locale === "en" ? "Correct" : "Верно",
+    correct: locale === "uz" ? "To‘g‘ri!" : locale === "en" ? "Correct!" : "Верно!",
     retry: locale === "uz" ? "Qayta urinib ko‘ring" : locale === "en" ? "Try again" : "Попробуйте ещё",
     placeholder: locale === "uz" ? "Javob" : locale === "en" ? "Answer" : "Ответ",
     hintBtn: locale === "uz" ? "Yordam olish" : locale === "en" ? "Get hint" : "Подсказка",
@@ -40,7 +42,15 @@ export function PracticeBlock({ lessonId, tasks, locale, onResult }: PracticeBlo
     const isCorrect = Math.abs(parsed - task.answer) <= task.tolerance;
     const firstTry = !attempts?.[task.id];
     submitProblem(lessonId, task.id, parsed, isCorrect);
-    if (!isCorrect) {
+    if (isCorrect) {
+      playCorrectSound();
+      confetti({
+        particleCount: 40,
+        spread: 50,
+        origin: { y: 0.75 },
+      });
+    } else {
+      playWrongSound();
       // Noto‘g‘ri bo‘lsa yordamni avtomatik ochamiz
       setShowHintMap((prev) => ({ ...prev, [task.id]: true }));
     }

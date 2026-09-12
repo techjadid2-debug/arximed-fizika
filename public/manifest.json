@@ -1,0 +1,17 @@
+{
+  "name": "Arximed.uz — Interaktiv Fizika",
+  "short_name": "Arximed",
+  "description": "Maktab o‘quvchilari uchun virtual laboratoriyalar va interaktiv darslar.",
+  "start_url": "/uz",
+  "display": "standalone",
+  "background_color": "#09090b",
+  "theme_color": "#10b981",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    }
+  ]
+}

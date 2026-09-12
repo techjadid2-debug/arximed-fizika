@@ -9,6 +9,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Slider } from "@/components/ui/slider";
 import type { Locale } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
+import confetti from "canvas-confetti";
+import { playCelebrationSound, playCorrectSound } from "@/lib/sound";
 
 interface FreeFallLabProps {
   locale?: Locale;
@@ -131,6 +133,21 @@ export function FreeFallLab({ locale = "uz" }: FreeFallLabProps) {
     animId = requestAnimationFrame(loop);
     return () => cancelAnimationFrame(animId);
   }, [isRunning, height, isVacuum, gravity]);
+
+  useEffect(() => {
+    if (isFinished) {
+      if (isVacuum) {
+        playCelebrationSound();
+        confetti({
+          particleCount: 75,
+          spread: 70,
+          origin: { y: 0.6 },
+        });
+      } else {
+        playCorrectSound();
+      }
+    }
+  }, [isFinished, isVacuum]);
 
   const t = {
     title:
@@ -359,8 +376,14 @@ export function FreeFallLab({ locale = "uz" }: FreeFallLabProps) {
                   <AlertCircle className="w-5 h-5 text-blue-400 shrink-0 mt-0.5" />
                 )}
                 <div className="text-xs leading-relaxed">
-                  <strong className="block text-sm font-semibold mb-1">
-                    {isVacuum ? "Galiley g‘alabasi! (t₁ = t₂)" : "Havo qarshiligi effekti"}
+                  <strong className="block text-sm font-bold mb-1 flex items-center gap-1.5 text-amber-300">
+                    {isVacuum ? (
+                      <>
+                        <span>⭐⭐⭐</span> Galiley g‘alabasi! (t₁ = t₂) · +30 XP
+                      </>
+                    ) : (
+                      "Havo qarshiligi effekti"
+                    )}
                   </strong>
                   {isVacuum ? t.vacuumSuccess : t.airExplanation}
                 </div>

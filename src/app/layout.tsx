@@ -17,11 +17,17 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Physica — fizikani tajriba orqali o‘rganing",
-    template: "%s · Physica",
+    default: "Arximed.uz — Maktab o‘quvchilari uchun interaktiv fizika",
+    template: "%s · Arximed.uz",
   },
   description:
-    "AP Physics va milliy sertifikat uchun interaktiv, simulyatsiyaga asoslangan fizika platformasi.",
+    "Fizika qonunlarini quruq formulalarsiz, qiziqarli tajribalar va virtual laboratoriyalar orqali o‘rganing.",
+  manifest: "/manifest.json",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "Arximed.uz",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

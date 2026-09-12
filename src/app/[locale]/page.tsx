@@ -9,25 +9,25 @@ import { isLocale, type Locale } from "@/lib/i18n";
 
 const copy = {
   uz: [
-    "Fizikani formuladan oldin his qiling.",
-    "Har bir qonunni tajriba, aniq formula va haqiqiy kasblar bilan tushuning.",
-    "Ilk darsni boshlash",
-    "Kurslar",
-    "Tushunish · Tajriba · Natija",
+    "Fizikani quruq formuladan oldin his qiling.",
+    "Har bir qonunni virtual tajriba, interaktiv laboratoriya va aniq namunaviy masalalar bilan oson o‘rganing.",
+    "1-Darsni Boshlash",
+    "78 Darslik Dastur",
+    "Tajriba · Tushunish · Natija",
   ],
   en: [
     "Feel physics before the formula.",
-    "Understand every law through experiments, clear formulae and real careers.",
-    "Start lesson one",
-    "Courses",
-    "Understand · Explore · Apply",
+    "Understand every law through interactive virtual experiments, guided labs and model problems.",
+    "Start Lesson One",
+    "78-Lesson Syllabus",
+    "Experiment · Understand · Excel",
   ],
   ru: [
     "Почувствуйте физику до формулы.",
-    "Понимайте каждый закон через опыт, точные формулы и реальные профессии.",
+    "Изучайте законы физики через виртуальные лаборатории, наглядные опыты и типовые задачи.",
     "Начать первый урок",
-    "Курсы",
-    "Понять · Исследовать · Применить",
+    "Программа 78 уроков",
+    "Опыт · Понимание · Результат",
   ],
 } as const;
 
@@ -67,7 +67,7 @@ export default async function LocalizedHome({ params }: { params: Promise<{ loca
             </div>
           </div>
           <p className="mt-16 font-mono text-[10px] uppercase tracking-[.13em] text-muted-foreground">
-            13+ · 2D / 3D labs · 60 Hz engine
+            Maktab o‘quvchilari uchun · Interaktiv 2D/3D laboratoriyalar · O‘yinlashtirilgan fizika
           </p>
         </section>
 
