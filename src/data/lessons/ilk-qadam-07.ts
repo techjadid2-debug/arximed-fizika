@@ -181,60 +181,12 @@ export const lesson07Quiz: QuizQuestion[] = [
     id: "ilk-07-q1",
     position: 1,
     question: "Nyutonning ikkinchi qonuni formulasini ko‘rsating:",
-    explanation: "Nyutonning ikkinchi qonuni: F = m * a yoki a = F / m.",
+    explanation: "Nyutonning ikkinchi qonuni: F = m · a yoki a = F / m.",
     options: [
       { id: "o1", label: "F = m · a", isCorrect: true },
       { id: "o2", label: "v = s / t", isCorrect: false },
       { id: "o3", label: "F = G · m₁ · m₂ / r²", isCorrect: false },
       { id: "o4", label: "E = m · c²", isCorrect: false },
-    ],
-  },
-  {
-    id: "ilk-07-q2",
-    position: 2,
-    question: "Agar jismga ta'sir qiluvchi kuch 3 marta oshirilsa, uning tezlanishi qanday o‘zgaradi?",
-    explanation: "Tezlanish kuchga to‘g‘ri proporsional (a ~ F). Shuning uchun tezlanish ham 3 marta oshadi.",
-    options: [
-      { id: "o1", label: "3 marta oshadi", isCorrect: true },
-      { id: "o2", label: "3 marta kamayadi", isCorrect: false },
-      { id: "o3", label: "9 marta oshadi", isCorrect: false },
-      { id: "o4", label: "O‘zgarmaydi", isCorrect: false },
-    ],
-  },
-  {
-    id: "ilk-07-q3",
-    position: 3,
-    question: "Agar bir xil kuch bilan massasi 2 marta katta bo‘lgan jism itarilsa, tezlanishi qanday bo‘ladi?",
-    explanation: "Tezlanish massaga teskari proporsional (a ~ 1/m). Massa 2 marta oshsa, tezlanish 2 marta kamayadi.",
-    options: [
-      { id: "o1", label: "2 marta kamayadi", isCorrect: true },
-      { id: "o2", label: "2 marta oshadi", isCorrect: false },
-      { id: "o3", label: "4 marta kamayadi", isCorrect: false },
-      { id: "o4", label: "O‘zgarmaydi", isCorrect: false },
-    ],
-  },
-  {
-    id: "ilk-07-q4",
-    position: 4,
-    question: "1 Nyuton (N) birligi asosiy SI birliklari orqali qanday ifodalanadi?",
-    explanation: "1 N = 1 kg · 1 m/s² = 1 kg·m/s².",
-    options: [
-      { id: "o1", label: "1 kg·m/s²", isCorrect: true },
-      { id: "o2", label: "1 kg·m/s", isCorrect: false },
-      { id: "o3", label: "1 g·sm/s²", isCorrect: false },
-      { id: "o4", label: "1 kg/m²", isCorrect: false },
-    ],
-  },
-  {
-    id: "ilk-07-q5",
-    position: 5,
-    question: "Kuch yo‘nalishi doimo qaysi kattalik yo‘nalishi bilan bir xil bo‘ladi?",
-    explanation: "Nyutonning ikkinchi qonuni vektor ko‘rinishida: F⃗ = m · a⃗. Demak, kuch va tezlanish yo‘nalishi doimo bir xil.",
-    options: [
-      { id: "o1", label: "Tezlanish yo‘nalishi bilan", isCorrect: true },
-      { id: "o2", label: "Tezlik yo‘nalishi bilan", isCorrect: false },
-      { id: "o3", label: "Bosib o‘tilgan yo‘l yo‘nalishi bilan", isCorrect: false },
-      { id: "o4", label: "Og‘irlik markazi yo‘nalishi bilan", isCorrect: false },
     ],
   },
 ];
@@ -244,56 +196,13 @@ export const lesson07Practice: PracticeTask[] = [
     id: "ilk-07-p1",
     position: 1,
     prompt:
-      "Massasi $3\\text{ kg}$ bo‘lgan aravachaga $15\\text{ N}$ gorizontal kuch ta'sir qilmoqda. Aravacha olgan tezlanishni ($\\text{m/s}^2$) hisoblang.",
+      "Massasi $4\\text{ kg}$ bo‘lgan aravachaga $20\\text{ N}$ gorizontal kuch ta'sir qilmoqda. Aravacha olgan tezlanishni ($\\text{m/s}^2$) hisoblang.",
     unit: "m/s²",
     answer: 5,
     tolerance: 0.1,
-    hint: "$a = F / m = 15 / 3$.",
-    solution: "$a = \\frac{F}{m} = \\frac{15}{3} = 5\\text{ m/s}^2$.",
-  },
-  {
-    id: "ilk-07-p2",
-    position: 2,
-    prompt:
-      "Avtomobil $2.5\\text{ m/s}^2$ tezlanish bilan tezlashmoqda. Agar avtomobil massasi $1200\\text{ kg}$ bo‘lsa, unga ta'sir qilayotgan tortish kuchini ($\\text{N}$) toping.",
-    unit: "N",
-    answer: 3000,
-    tolerance: 10,
-    hint: "$F = m \\times a = 1200 \\times 2.5$.",
-    solution: "$F = 1200 \\times 2.5 = 3000\\text{ N} = 3\\text{ kN}$.",
-  },
-  {
-    id: "ilk-07-p3",
-    position: 3,
-    prompt:
-      "$50\\text{ N}$ kuch ta'sirida jism $2\\text{ m/s}^2$ tezlanish oldi. Ushbu jismning massasini ($\\text{kg}$) aniqlang.",
-    unit: "kg",
-    answer: 25,
-    tolerance: 0.1,
-    hint: "$m = F / a = 50 / 2$.",
-    solution: "$m = \\frac{F}{a} = \\frac{50}{2} = 25\\text{ kg}$.",
-  },
-  {
-    id: "ilk-07-p4",
-    position: 4,
-    prompt:
-      "Massasi $500\\text{ gramm}$ bo‘lgan koptokka zarba berilganda u $40\\text{ m/s}^2$ tezlanish oldi. Zarba kuchini ($\\text{N}$) toping.",
-    unit: "N",
-    answer: 20,
-    tolerance: 0.1,
-    hint: "Birliklarni SI ga o‘tkazing: $500\\text{ g} = 0.5\\text{ kg}$. So‘ng $F = 0.5 \\times 40$.",
-    solution: "$m = 0.5\\text{ kg}$, $F = m \\times a = 0.5 \\times 40 = 20\\text{ N}$.",
-  },
-  {
-    id: "ilk-07-p5",
-    position: 5,
-    prompt:
-      "Massasi $4\\text{ kg}$ bo‘lgan jismga bir tomonga yo‘nalgan $18\\text{ N}$ va qarama-qarshi tomonga $6\\text{ N}$ kuch ta'sir qilmoqda. Jism oladigan tezlanishni ($\\text{m/s}^2$) hisoblang.",
-    unit: "m/s²",
-    answer: 3,
-    tolerance: 0.1,
-    hint: "Natijaviy kuchni toping: $F_{\\text{nat}} = 18 - 6 = 12\\text{ N}$. Keyin $a = 12 / 4$.",
-    solution: "$F_{\\text{nat}} = 18 - 6 = 12\\text{ N}$, $a = \\frac{12}{4} = 3\\text{ m/s}^2$.",
+    hint: "Nyutonning ikkinchi qonuni: $a = \\frac{F}{m}$.",
+    solution:
+      "**Namunaviy yechim:**\n- **Berilgan:** $m = 4\\text{ kg}$, $F = 20\\text{ N}$\n- **Topish kerak:** $a - ?$\n- **Formula:** $a = \\frac{F}{m}$\n- **Yechilishi:** $a = \\frac{20\\text{ N}}{4\\text{ kg}} = 5\\text{ m/s}^2$\n- **Javob:** $5\\text{ m/s}^2$.",
   },
 ];
 

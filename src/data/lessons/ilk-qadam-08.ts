@@ -175,62 +175,14 @@ export const lesson08Quiz: QuizQuestion[] = [
   {
     id: "ilk-08-q1",
     position: 1,
-    question: "Nyutonning uchinchi qonunining matematik ifodasini ko‘rsating:",
-    explanation: "Nyutonning uchinchi qonuni: F⃗₁₂ = -F⃗₂₁ yoki modul jihatdan |F₁| = |F₂|.",
-    options: [
-      { id: "o1", label: "F⃗₁₂ = -F⃗₂₁", isCorrect: true },
-      { id: "o2", label: "F = m · a", isCorrect: false },
-      { id: "o3", label: "F = m · g", isCorrect: false },
-      { id: "o4", label: "F = k · x", isCorrect: false },
-    ],
-  },
-  {
-    id: "ilk-08-q2",
-    position: 2,
-    question: "Nega ta'sir va aks ta'sir kuchlari bir-birini kompensatsiya qilmaydi (nolga aylantirmaydi)?",
-    explanation: "Chunki bu kuchlar bitta jismga emas, balki ikki xil jismga qo‘yilgan bo‘ladi.",
-    options: [
-      { id: "o1", label: "Chunki ular ikki xil jismga qo‘yilgan", isCorrect: true },
-      { id: "o2", label: "Chunki ularning modullari har xil", isCorrect: false },
-      { id: "o3", label: "Chunki ular turli vaqtlarda paydo bo‘ladi", isCorrect: false },
-      { id: "o4", label: "Chunki ular bir xil yo‘nalishda bo‘ladi", isCorrect: false },
-    ],
-  },
-  {
-    id: "ilk-08-q3",
-    position: 3,
-    question: "Ot aravani 500 N kuch bilan oldinga tortmoqda. Arava otni qanday kuch bilan orqaga tortadi?",
-    explanation: "Nyutonning uchinchi qonuniga ko‘ra, arava ham otni xuddi shunday 500 N kuch bilan orqaga tortadi.",
-    options: [
-      { id: "o1", label: "500 N", isCorrect: true },
-      { id: "o2", label: "0 N", isCorrect: false },
-      { id: "o3", label: "1000 N", isCorrect: false },
-      { id: "o4", label: "250 N", isCorrect: false },
-    ],
-  },
-  {
-    id: "ilk-08-q4",
-    position: 4,
-    question: "Kosmik raketa havosi yo‘q ochiq koinotda qanday kuch hisobiga tezlanish oladi?",
+    question: "Nyutonning uchinchi qonuniga ko‘ra ta'sir va aks ta'sir kuchlari qanday munosabatda bo‘ladi?",
     explanation:
-      "Raketa dvigatelidan otilib chiqayotgan gazlarning raketaga beradigan aks ta'sir kuchi (reaktiv kuch) hisobiga.",
+      "Nyutonning uchinchi qonuniga ko‘ra: har qanday ta'sir kuchiga modul jihatdan teng va qarama-qarshi yo‘nalgan aks ta'sir kuchi mavjud (F⃗₁₂ = -F⃗₂₁).",
     options: [
-      { id: "o1", label: "Yonilg‘i gazlarining raketaga beradigan aks ta'sir kuchi hisobiga", isCorrect: true },
-      { id: "o2", label: "Oyning gravitatsiya kuchi hisobiga", isCorrect: false },
-      { id: "o3", label: "Quyosh shamoli bosimi hisobiga", isCorrect: false },
-      { id: "o4", label: "Atmosfera havosining itarishi hisobiga", isCorrect: false },
-    ],
-  },
-  {
-    id: "ilk-08-q5",
-    position: 5,
-    question: "Muz ustidagi ikki bolakay qo‘llarini bir-biriga tirab itarishdi. Qaysi biri ko‘proq tezlanish oladi?",
-    explanation: "Kuchlar teng bo‘lgani uchun a = F/m formula bo‘yicha massasi kichik bo‘lgan bola kattaroq tezlanish oladi.",
-    options: [
-      { id: "o1", label: "Massasi kichikroq bo‘lgan bolakay", isCorrect: true },
-      { id: "o2", label: "Massasi kattaroq bo‘lgan bolakay", isCorrect: false },
-      { id: "o3", label: "Ikkalasi ham bir xil tezlanish oladi", isCorrect: false },
-      { id: "o4", label: "Birinchi bo‘lib itargan bola", isCorrect: false },
+      { id: "o1", label: "Modul jihatdan teng, yo‘nalishi qarama-qarshi", isCorrect: true },
+      { id: "o2", label: "Ta'sir kuchi doimo aks ta'sir kuchidan katta bo‘ladi", isCorrect: false },
+      { id: "o3", label: "Aks ta'sir kuchi faqat harakat to‘xtaganda paydo bo‘ladi", isCorrect: false },
+      { id: "o4", label: "Ular har doim bir xil tomonga yo‘nalgan bo‘ladi", isCorrect: false },
     ],
   },
 ];
@@ -240,56 +192,13 @@ export const lesson08Practice: PracticeTask[] = [
     id: "ilk-08-p1",
     position: 1,
     prompt:
-      "Muz ustida massasi $40\\text{ kg}$ bo‘lgan bola massasi $60\\text{ kg}$ bo‘lgan ikkinchi bolani $120\\text{ N}$ kuch bilan itardi. Ikkinchi bola birinchi bolani qanday kuch ($\\text{N}$) bilan itargan?",
+      "Muz ustida turgan bola do‘stini $120\\text{ N}$ kuch bilan itardi. Nyutonning uchinchi qonuniga ko‘ra, ikkinchi bola birinchi bolaga qanday aks ta'sir kuchi ($\\text{N}$) ko‘rsatadi?",
     unit: "N",
     answer: 120,
     tolerance: 0.1,
-    hint: "Nyutonning uchinchi qonuniga ko‘ra, ta'sir kuchi aks ta'sir kuchiga teng: $|F_1| = |F_2|$.",
-    solution: "$|F_2| = |F_1| = 120\\text{ N}$.",
-  },
-  {
-    id: "ilk-08-p2",
-    position: 2,
-    prompt:
-      "Yuqoridagi masalada ($F = 120\\text{ N}$), massasi $40\\text{ kg}$ bo‘lgan birinchi bolaning olgan tezlanishini ($\\text{m/s}^2$) hisoblang.",
-    unit: "m/s²",
-    answer: 3,
-    tolerance: 0.1,
-    hint: "$a_1 = F / m_1 = 120 / 40$.",
-    solution: "$a_1 = \\frac{120}{40} = 3\\text{ m/s}^2$.",
-  },
-  {
-    id: "ilk-08-p3",
-    position: 3,
-    prompt:
-      "Xuddi shu to‘qnashuvda ($F = 120\\text{ N}$), massasi $60\\text{ kg}$ bo‘lgan ikkinchi bolaning olgan tezlanishini ($\\text{m/s}^2$) hisoblang.",
-    unit: "m/s²",
-    answer: 2,
-    tolerance: 0.1,
-    hint: "$a_2 = F / m_2 = 120 / 60$.",
-    solution: "$a_2 = \\frac{120}{60} = 2\\text{ m/s}^2$.",
-  },
-  {
-    id: "ilk-08-p4",
-    position: 4,
-    prompt:
-      "Muz ustida turgan ikki konkichi bir-birini itarib yubordi. Birinchisi $4\\text{ m/s}^2$, ikkinchisi $2\\text{ m/s}^2$ tezlanish oldi. Birinchi konkichining massasi $50\\text{ kg}$ bo‘lsa, ikkinchi konkichining massasini ($\\text{kg}$) toping.",
-    unit: "kg",
-    answer: 100,
-    tolerance: 0.5,
-    hint: "$m_1 a_1 = m_2 a_2 \\implies m_2 = (50 \\times 4) / 2$.",
-    solution: "$m_2 = \\frac{m_1 a_1}{a_2} = \\frac{50 \\times 4}{2} = 100\\text{ kg}$.",
-  },
-  {
-    id: "ilk-08-p5",
-    position: 5,
-    prompt:
-      "Raketa dvigateli bir sekundda $10\\text{ kg}$ gazni $2000\\text{ m/s}$ tezlikda otib chiqaradi. Dvigatel hosil qilgan reaktiv tortish kuchini ($\\text{kN}$) toping.",
-    unit: "kN",
-    answer: 20,
-    tolerance: 0.1,
-    hint: "$F = (m / t) \\times v = 10 \\times 2000 = 20000\\text{ N} = 20\\text{ kN}$.",
-    solution: "$F = 10 \\times 2000 = 20\\,000\\text{ N} = 20\\text{ kN}$.",
+    hint: "Nyutonning uchinchi qonuni: ta'sir kuchi aks ta'sir kuchiga teng ($|F_1| = |F_2|$).",
+    solution:
+      "**Namunaviy yechim:**\n- **Berilgan:** $F_1 = 120\\text{ N}$\n- **Topish kerak:** $F_2 - ?$\n- **Formula:** $|F_2| = |F_1|$\n- **Yechilishi:** $F_2 = 120\\text{ N}$\n- **Javob:** $120\\text{ N}$ (kuch moduli teng, yo‘nalishi esa qarama-qarshi).",
   },
 ];
 

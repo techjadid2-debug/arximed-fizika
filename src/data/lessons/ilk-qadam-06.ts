@@ -188,57 +188,6 @@ export const lesson06Quiz: QuizQuestion[] = [
       { id: "o4", label: "Faqat suyuqliklarda paydo bo‘ladigan kuch", isCorrect: false },
     ],
   },
-  {
-    id: "ilk-06-q2",
-    position: 2,
-    question: "Nyutonning birinchi qonuniga ko‘ra jism qachon to‘g‘ri chiziqli tekis harakat qiladi?",
-    explanation:
-      "Jismga boshqa jismlar ta'sir etmasa yoki ularning barcha ta'sirlari tenglashsa (kuchlar yig‘indisi nolga teng bo‘lsa), jism tezligini saqlaydi.",
-    options: [
-      { id: "o1", label: "Unga doimiy katta kuch ta'sir qilib tursa", isCorrect: false },
-      { id: "o2", label: "Unga ta'sir qiluvchi barcha kuchlarning yig‘indisi nolga teng bo‘lsa", isCorrect: true },
-      { id: "o3", label: "Faqat vakuumda yuqoriga otilganda", isCorrect: false },
-      { id: "o4", label: "Faqat harakat yo‘nalishi o‘zgarib turganda", isCorrect: false },
-    ],
-  },
-  {
-    id: "ilk-06-q3",
-    position: 3,
-    question: "Jismning inersiya o‘lchovi nima?",
-    explanation: "Fizikada jismning inersiyasini miqdor jihatdan ifodalovchi kattalik massadir (SI da kg).",
-    options: [
-      { id: "o1", label: "Jismning tezligi", isCorrect: false },
-      { id: "o2", label: "Jismning massasi", isCorrect: true },
-      { id: "o3", label: "Jismning hajmi", isCorrect: false },
-      { id: "o4", label: "Jismning og‘irlik kuchi", isCorrect: false },
-    ],
-  },
-  {
-    id: "ilk-06-q4",
-    position: 4,
-    question: "Quyidagilardan qaysi biri inersial sanoq sistemasiga misol bo‘la oladi?",
-    explanation:
-      "To‘g‘ri chiziq bo‘ylab bir tekis (tezlanishsiz) harakatlanayotgan vagon inersial sanoq sistemasi hisoblanadi.",
-    options: [
-      { id: "o1", label: "Balandlikdan tezlanish bilan tushayotgan lift", isCorrect: false },
-      { id: "o2", label: "Aylanayotgan karusel", isCorrect: false },
-      { id: "o3", label: "To‘g‘ri relsda bir tekis (o‘zgarmas tezlikda) ketayotgan poyezd vagoni", isCorrect: true },
-      { id: "o4", label: "Keskin burilayotgan avtomobil", isCorrect: false },
-    ],
-  },
-  {
-    id: "ilk-06-q5",
-    position: 5,
-    question: "Avtomobilda xavfsizlik kamari nega taqiladi?",
-    explanation:
-      "Avtomobil tormoz berganda yo‘lovchi inersiya tufayli o‘zining boshlang‘ich tezligida oldinga uchishini to‘xtatish uchun.",
-    options: [
-      { id: "o1", label: "Inersiya tufayli oldinga harakatlanayotgan tanani to‘xtatish uchun", isCorrect: true },
-      { id: "o2", label: "Avtomobilning massasini oshirish uchun", isCorrect: false },
-      { id: "o3", label: "Dvigatel quvvatini oshirish uchun", isCorrect: false },
-      { id: "o4", label: "Shinalar ishqalanishini oshirish uchun", isCorrect: false },
-    ],
-  },
 ];
 
 export const lesson06Practice: PracticeTask[] = [
@@ -246,56 +195,13 @@ export const lesson06Practice: PracticeTask[] = [
     id: "ilk-06-p1",
     position: 1,
     prompt:
-      "Gorizontal stolda turgan $4\\text{ kg}$ massali kitobga o‘ng tomonga $12\\text{ N}$ va chap tomonga $12\\text{ N}$ kuch ta'sir qilmoqda. Kitobga ta'sir qiluvchi natijaviy kuchni ($\\text{N}$) toping.",
+      "Gorizontal stolda turgan $4\\text{ kg}$ massali jismga o‘ng tomonga $12\\text{ N}$ va chap tomonga $12\\text{ N}$ qarama-qarshi kuchlar ta'sir qilmoqda. Jismga ta'sir qiluvchi natijaviy kuchni ($\\text{N}$) hisoblang.",
     unit: "N",
     answer: 0,
     tolerance: 0.01,
-    hint: "Kuchlar qarama-qarshi yo‘nalgan: $F_{\\text{nat}} = F_1 - F_2 = 12 - 12$.",
-    solution: "$F_{\\text{nat}} = 12 - 12 = 0\\text{ N}$. Kuchlar bir-birini kompensatsiya qiladi.",
-  },
-  {
-    id: "ilk-06-p2",
-    position: 2,
-    prompt:
-      "Muz ustida sirpanayotgan shaybaga gorizontal yo‘nalishda hech qanday kuch ta'sir qilmayapti. Agar u $8\\text{ m/s}$ tezlikda ketayotgan bo‘lsa, $5\\text{ sekund}$dan keyin uning tezligi ($\\text{m/s}$) qancha bo‘ladi?",
-    unit: "m/s",
-    answer: 8,
-    tolerance: 0.1,
-    hint: "Nyutonning birinchi qonuniga ko‘ra, tashqi kuch bo‘lmasa tezlik o‘zgarmaydi ($v = \\text{const}$).",
-    solution: "$v = 8\\text{ m/s}$. Tashqi kuchlar bo‘lmagani uchun tezlik o‘zgarmaydi.",
-  },
-  {
-    id: "ilk-06-p3",
-    position: 3,
-    prompt:
-      "Tenglashgan kuchlar ta'sirida to‘g‘ri chiziqli tekis harakat qilayotgan jism $15\\text{ sekund}$da $120\\text{ metr}$ masofani bosib o‘tdi. Jismning tezligini ($\\text{m/s}$) hisoblang.",
-    unit: "m/s",
-    answer: 8,
-    tolerance: 0.1,
-    hint: "$v = s / t = 120 / 15$.",
-    solution: "$v = \\frac{120}{15} = 8\\text{ m/s}$.",
-  },
-  {
-    id: "ilk-06-p4",
-    position: 4,
-    prompt:
-      "Bir xil $20\\text{ N}$ kuch bilan ikkita jism itarildi. Birinchi jismning massasi $2\\text{ kg}$, ikkinchisiniki $10\\text{ kg}$. Ikkinchi jismning inersiyasi birinchisidan necha marta katta?",
-    unit: "marta",
-    answer: 5,
-    tolerance: 0.01,
-    hint: "Inersiya o‘lchovi massadir: $m_2 / m_1 = 10 / 2$.",
-    solution: "Inersiyalar nisbati massalar nisbatiga teng: $10 / 2 = 5$ marta.",
-  },
-  {
-    id: "ilk-06-p5",
-    position: 5,
-    prompt:
-      "Kosmik kema dvigatellari o‘chirilgan holda yulduzlararo fazoda $15000\\text{ m/s}$ o‘zgarmas tezlik bilan tekis uchmoqda. Unda natijaviy kuch ($\\text{N}$) nimaga teng?",
-    unit: "N",
-    answer: 0,
-    tolerance: 0.01,
-    hint: "Harakat to‘g‘ri chiziqli tekis bo‘lsa, natijaviy kuch nolga teng.",
-    solution: "$F_{\\text{nat}} = 0\\text{ N}$. Dvigatellar ishlamasa ham inersiya hisobiga harakat davom etadi.",
+    hint: "Kuchlar bir to‘g‘ri chiziqda qarama-qarshi yo‘nalganda natijaviy kuch ularning ayirmasiga teng: $F_{\\text{nat}} = F_1 - F_2$.",
+    solution:
+      "**Namunaviy yechim:**\n- **Berilgan:** $F_1 = 12\\text{ N}$, $F_2 = 12\\text{ N}$\n- **Topish kerak:** $F_{\\text{nat}} - ?$\n- **Formula:** $F_{\\text{nat}} = F_1 - F_2$\n- **Yechilishi:** $F_{\\text{nat}} = 12 - 12 = 0\\text{ N}$\n- **Javob:** $0\\text{ N}$ (kuchlar kompensatsiyalashgan, jism tinch turadi).",
   },
 ];
 

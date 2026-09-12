@@ -174,64 +174,13 @@ export const lesson09Quiz: QuizQuestion[] = [
   {
     id: "ilk-09-q1",
     position: 1,
-    question: "Agar ikki jism orasidagi masofa 2 marta oshirilsa, ularning tortishish kuchi qanday o‘zgaradi?",
-    explanation:
-      "Butun olam tortishish qonuniga ko‘ra (F ~ 1/r²), masofa 2 marta oshganda kuch 2² = 4 marta kamayadi.",
-    options: [
-      { id: "o1", label: "4 marta kamayadi", isCorrect: true },
-      { id: "o2", label: "2 marta kamayadi", isCorrect: false },
-      { id: "o3", label: "4 marta oshadi", isCorrect: false },
-      { id: "o4", label: "O‘zgarmaydi", isCorrect: false },
-    ],
-  },
-  {
-    id: "ilk-09-q2",
-    position: 2,
     question: "Jism massasi va og‘irligi haqidagi qaysi fikr to‘g‘ri?",
-    explanation: "Massa — jismning o‘zgarmas skalyar xossasi (kg), og‘irlik esa tayanchga ko‘rsatiladigan kuchdir (N).",
+    explanation: "Massa — jismdagi modda miqdori va inersiya o‘lchovi (kg), og‘irlik esa tayanchga ko‘rsatiladigan bosim kuchidir (N).",
     options: [
       { id: "o1", label: "Massa kilogrammda, og‘irlik esa Nyutonda o‘lchanadi", isCorrect: true },
       { id: "o2", label: "Massa va og‘irlik mutlaqo bir xil tushunchadir", isCorrect: false },
       { id: "o3", label: "Oyga borganda massa kamayadi, og‘irlik esa o‘zgarmaydi", isCorrect: false },
       { id: "o4", label: "Og‘irlik skalyar, massa esa vektor kattalikdir", isCorrect: false },
-    ],
-  },
-  {
-    id: "ilk-09-q3",
-    position: 3,
-    question: "Lift yuqoriga a = 2 m/s² tezlanish bilan tezlashayotganda, undagi odamning og‘irligi qanday hisoblanadi?",
-    explanation: "Yuqoriga tezlanuvchan harakatda ortiqcha yuklanish yuz beradi: P = m(g + a).",
-    options: [
-      { id: "o1", label: "P = m · (g + a)", isCorrect: true },
-      { id: "o2", label: "P = m · (g - a)", isCorrect: false },
-      { id: "o3", label: "P = m · g", isCorrect: false },
-      { id: "o4", label: "P = 0", isCorrect: false },
-    ],
-  },
-  {
-    id: "ilk-09-q4",
-    position: 4,
-    question: "Vaznsizlik holati qachon yuzaga keladi?",
-    explanation:
-      "Jism faqat og‘irlik kuchi ta'sirida a = g tezlanish bilan erkin tushayotganda tayanchga bosim bermaydi (P = 0).",
-    options: [
-      { id: "o1", label: "Jism faqat og‘irlik kuchi ta'sirida erkin tushayotganda (a = g)", isCorrect: true },
-      { id: "o2", label: "Jism Yer yuzida tinch turganda", isCorrect: false },
-      { id: "o3", label: "Lift katta o‘zgarmas tezlikda yuqoriga ko‘tarilayotganda", isCorrect: false },
-      { id: "o4", label: "Faqat Quyosh tizimidan chiqib ketganda", isCorrect: false },
-    ],
-  },
-  {
-    id: "ilk-09-q5",
-    position: 5,
-    question: "Xalqaro Kosmik Stantsiyadagi kosmonavtlar nima sababdan muallaq suzib yurishadi?",
-    explanation:
-      "Stantsiya va uning ichidagi hamma narsa Yer atrofida birgalikda doimiy erkin tushish harakatida bo‘lgani uchun.",
-    options: [
-      { id: "o1", label: "Stantsiya Yer atrofida doimiy erkin tushishda bo‘lgani uchun", isCorrect: true },
-      { id: "o2", label: "U balandlikda Yerning gravitatsiyasi butunlay nolga teng bo‘lgani uchun", isCorrect: false },
-      { id: "o3", label: "Stantsiya ichida havo yo‘qligi sababli", isCorrect: false },
-      { id: "o4", label: "Kosmik kiyimlari magnitlangan bo‘lgani uchun", isCorrect: false },
     ],
   },
 ];
@@ -241,56 +190,13 @@ export const lesson09Practice: PracticeTask[] = [
     id: "ilk-09-p1",
     position: 1,
     prompt:
-      "Massasi $60\\text{ kg}$ bo‘lgan odamning Yer sirtidagi og‘irlik kuchini ($\\text{N}$) hisoblang. ($g = 10\\text{ m/s}^2$).",
+      "Massasi $60\\text{ kg}$ bo‘lgan o‘quvchining Yer sirtidagi og‘irlik kuchini ($\\text{N}$) hisoblang. ($g = 10\\text{ m/s}^2$).",
     unit: "N",
     answer: 600,
     tolerance: 1,
-    hint: "$F_{\\text{og‘}} = m \\times g = 60 \\times 10$.",
-    solution: "$F_{\\text{og‘}} = m \\times g = 60 \\times 10 = 600\\text{ N}$.",
-  },
-  {
-    id: "ilk-09-p2",
-    position: 2,
-    prompt:
-      "Oyda erkin tushish tezlanishi Yerga nisbatan 6 marta kichik ($g_{\\text{Oy}} \\approx 1.6\\text{ m/s}^2$). Massasi $75\\text{ kg}$ bo‘lgan kosmonavtning Oydagi og‘irligini ($\\text{N}$) toping.",
-    unit: "N",
-    answer: 120,
-    tolerance: 2,
-    hint: "$P = m \\times g_{\\text{Oy}} = 75 \\times 1.6$.",
-    solution: "$P = 75 \\times 1.6 = 120\\text{ N}$.",
-  },
-  {
-    id: "ilk-09-p3",
-    position: 3,
-    prompt:
-      "Massasi $50\\text{ kg}$ bo‘lgan bola lift ichidagi tarozi ustida turibdi. Agar lift $2\\text{ m/s}^2$ tezlanish bilan yuqoriga ko‘tarila boshlasa, tarozi qanday og‘irlikni ($\\text{N}$) ko‘rsatadi? ($g = 10\\text{ m/s}^2$).",
-    unit: "N",
-    answer: 600,
-    tolerance: 1,
-    hint: "$P = m(g + a) = 50 \\times (10 + 2) = 50 \\times 12$.",
-    solution: "$P = m(g + a) = 50 \\times (10 + 2) = 600\\text{ N}$.",
-  },
-  {
-    id: "ilk-09-p4",
-    position: 4,
-    prompt:
-      "Agar xuddi shu lift ($m = 50\\text{ kg}$) $2\\text{ m/s}^2$ tezlanish bilan pastga tushsa, tarozi ko‘rsatkichi necha Nyuton ($\\text{N}$) bo‘ladi? ($g = 10\\text{ m/s}^2$).",
-    unit: "N",
-    answer: 400,
-    tolerance: 1,
-    hint: "$P = m(g - a) = 50 \\times (10 - 2) = 50 \\times 8$.",
-    solution: "$P = m(g - a) = 50 \\times (10 - 2) = 400\\text{ N}$.",
-  },
-  {
-    id: "ilk-09-p5",
-    position: 5,
-    prompt:
-      "Kosmik kema Yer markazidan $R$ masofada bo‘lganda Yer uni $1600\\text{ N}$ kuch bilan tortardi. Kema Yer markazidan $4R$ masofaga uzoqlashganda, tortishish kuchi necha Nyuton ($\\text{N}$) bo‘lib qoladi?",
-    unit: "N",
-    answer: 100,
-    tolerance: 1,
-    hint: "Masofa 4 marta oshsa, tortishish kuchi $4^2 = 16$ marta kamayadi: $1600 / 16$.",
-    solution: "$F' = \\frac{F}{4^2} = \\frac{1600}{16} = 100\\text{ N}$.",
+    hint: "Og‘irlik kuchi formulasi: $F_{\\text{og‘}} = m \\cdot g$.",
+    solution:
+      "**Namunaviy yechim:**\n- **Berilgan:** $m = 60\\text{ kg}$, $g = 10\\text{ m/s}^2$\n- **Topish kerak:** $F_{\\text{og‘}} - ?$\n- **Formula:** $F_{\\text{og‘}} = m \\cdot g$\n- **Yechilishi:** $F_{\\text{og‘}} = 60\\text{ kg} \\times 10\\text{ m/s}^2 = 600\\text{ N}$\n- **Javob:** $600\\text{ N}$.",
   },
 ];
 

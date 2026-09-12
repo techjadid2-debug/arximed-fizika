@@ -17,8 +17,8 @@ describe("Lesson 03 Data Integrity", () => {
     }
   });
 
-  it("should have exactly 5 quiz questions with exactly one correct option each", () => {
-    expect(lesson03Quiz).toHaveLength(5);
+  it("should have exactly 1 quiz question with exactly one correct option", () => {
+    expect(lesson03Quiz).toHaveLength(1);
 
     lesson03Quiz.forEach((q, index) => {
       expect(q.position).toBe(index + 1);
@@ -29,37 +29,28 @@ describe("Lesson 03 Data Integrity", () => {
     });
   });
 
-  it("should have exactly 5 practice tasks with valid numerical answers", () => {
-    expect(lesson03Practice).toHaveLength(5);
+  it("should have exactly 1 model practice task with valid numerical answer", () => {
+    expect(lesson03Practice).toHaveLength(1);
 
-    lesson03Practice.forEach((task, index) => {
-      expect(task.position).toBe(index + 1);
-      expect(Number.isFinite(task.answer)).toBe(true);
-      expect(task.tolerance).toBeGreaterThan(0);
-      expect(task.unit.length).toBeGreaterThan(0);
-      expect(task.hint.length).toBeGreaterThan(5);
-      expect(task.solution.length).toBeGreaterThan(5);
-    });
+    const task = lesson03Practice[0];
+    expect(task.position).toBe(1);
+    expect(Number.isFinite(task.answer)).toBe(true);
+    expect(task.tolerance).toBeGreaterThan(0);
+    expect(task.unit.length).toBeGreaterThan(0);
+    expect(task.hint.length).toBeGreaterThan(5);
+    expect(task.solution).toContain("Namunaviy yechim");
   });
 
   it("should correctly compute practice answers", () => {
-    // Task 1: 6 * 15 = 90 m
+    // 6 * 15 = 90 m
     expect(lesson03Practice[0].answer).toBe(90);
-    // Task 2: 300 / 50 = 6 m/s
-    expect(lesson03Practice[1].answer).toBe(6);
-    // Task 3: 90 / 3.6 = 25 m/s
-    expect(lesson03Practice[2].answer).toBe(25);
-    // Task 4: 200 * 30 / 1000 = 6 km
-    expect(lesson03Practice[3].answer).toBe(6);
-    // Task 5: (4 + 8) / (1 + 2) = 12 / 3 = 4 km/h
-    expect(lesson03Practice[4].answer).toBe(4);
   });
 
   it("should export a valid static lesson object", () => {
     expect(lesson03Static.id).toBe("ilk-qadam-03");
     expect(lesson03Static.number).toBe("03");
-    expect(lesson03Static.quiz).toHaveLength(5);
-    expect(lesson03Static.practice).toHaveLength(5);
+    expect(lesson03Static.quiz).toHaveLength(1);
+    expect(lesson03Static.practice).toHaveLength(1);
     expect(lesson03Static.homework.title.length).toBeGreaterThan(5);
   });
 });
