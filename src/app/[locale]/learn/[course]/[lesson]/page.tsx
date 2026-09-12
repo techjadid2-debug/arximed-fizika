@@ -8,18 +8,29 @@ import { getLessonCheatsheet } from "@/data/cheatsheets/ilk-qadam";
 import { isLocale, type Locale } from "@/lib/i18n";
 import { getLesson } from "@/lib/lessons";
 
+export function generateStaticParams() {
+  const locales = ["uz", "en", "ru"];
+  const lessons = Array.from({ length: 78 }, (_, i) => String(i + 1).padStart(2, "0"));
+  return locales.flatMap((locale) =>
+    lessons.map((lesson) => ({
+      locale,
+      course: "ilk-qadam",
+      lesson,
+    })),
+  );
+}
+
+export const revalidate = 3600;
+
 export default async function LessonPage({
   params,
-  searchParams,
 }: {
   params: Promise<{ locale: string; course: string; lesson: string }>;
-  searchParams?: Promise<{ mode?: string }>;
 }) {
   const { locale: rawLocale, course, lesson: number } = await params;
   if (!isLocale(rawLocale)) notFound();
 
-  const query = searchParams ? await searchParams : undefined;
-  const initialMode = query?.mode === "interactive" ? "interactive" : "cheatsheet";
+  const initialMode = "cheatsheet";
 
   // O‘qituvchi cheatsheeti (barcha darslar uchun mavjud)
   const cheatsheet = getLessonCheatsheet(number);
@@ -28,7 +39,7 @@ export default async function LessonPage({
   const lesson = await getLesson(course, number).catch(() => null);
 
   const hasInteractiveContent = Boolean(
-    lesson && (lesson.quiz.length > 0 || lesson.videoUrl || ["01", "02", "03", "04", "05"].includes(number)),
+    lesson && (lesson.quiz.length > 0 || lesson.videoUrl || parseInt(number, 10) <= 10),
   );
 
   return (

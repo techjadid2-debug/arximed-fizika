@@ -35,6 +35,10 @@ function getStaticIlkQadamCourse(): Course {
   };
 }
 
+export function generateStaticParams() {
+  return [{ locale: "uz" }, { locale: "en" }, { locale: "ru" }];
+}
+
 export default async function IlkQadamRoadmapPage({
   params,
 }: {

@@ -31,6 +31,10 @@ const copy = {
   ],
 } as const;
 
+export function generateStaticParams() {
+  return [{ locale: "uz" }, { locale: "en" }, { locale: "ru" }];
+}
+
 export default async function LocalizedHome({ params }: { params: Promise<{ locale: string }> }) {
   const { locale: rawLocale } = await params;
   if (!isLocale(rawLocale)) notFound();

@@ -1,4 +1,5 @@
 import { createServerClient } from "@supabase/ssr";
+import { createClient } from "@supabase/supabase-js";
 import { cookies } from "next/headers";
 
 import { SUPABASE_ANON_KEY, SUPABASE_URL, isSupabaseConfigured } from "./env";
@@ -26,3 +27,18 @@ export async function createSupabaseServerClient() {
     },
   });
 }
+
+let cachedPublicClient: ReturnType<typeof createClient> | null = null;
+
+/**
+ * Ommaviy dars va kurslarni o‘qish uchun cookiessiz yengil Supabase mijozi.
+ * Statik sahifalar (SSG/ISR) optimizatsiyasini buzmaydi.
+ */
+export function createSupabasePublicClient() {
+  if (!isSupabaseConfigured()) return null;
+  cachedPublicClient ??= createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+    auth: { persistSession: false },
+  });
+  return cachedPublicClient;
+}
+

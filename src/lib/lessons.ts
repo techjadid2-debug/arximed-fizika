@@ -1,7 +1,7 @@
 import "server-only";
 
 import { getStaticLesson } from "@/data/lessons";
-import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { createSupabasePublicClient } from "@/lib/supabase/server";
 import type { Course, Lesson, LessonSummary, PracticeTask, QuizQuestion } from "@/types/lesson";
 
 /**
@@ -66,7 +66,7 @@ function toPractice(rows: PracticeRow[]): PracticeTask[] {
 }
 
 export async function getCourse(slug: string): Promise<Course | null> {
-  const supabase = await createSupabaseServerClient().catch(() => null);
+  const supabase = createSupabasePublicClient();
   if (!supabase) return null;
 
   try {
@@ -82,7 +82,22 @@ export async function getCourse(slug: string): Promise<Course | null> {
       .maybeSingle()
       .then(({ data, error }) => (error || !data ? null : data));
 
-    const data = await Promise.race([queryPromise, timeoutPromise]);
+    const data = (await Promise.race([queryPromise, timeoutPromise])) as {
+      id: string;
+      slug: string;
+      title: string;
+      description: string;
+      modules?: { id: string; position: number; title: string }[];
+      lessons?: {
+        id: string;
+        number: string;
+        position: number;
+        title: string;
+        module_id: string | null;
+        video_url: string | null;
+        is_published: boolean;
+      }[];
+    } | null;
     if (!data) return null;
 
     const lessons: LessonSummary[] = byPosition(
@@ -123,7 +138,7 @@ export async function getLesson(courseSlug: string, number: string): Promise<Les
   const staticLesson = getStaticLesson(courseSlug, number);
   if (staticLesson) return staticLesson;
 
-  const supabase = await createSupabaseServerClient().catch(() => null);
+  const supabase = createSupabasePublicClient();
   if (!supabase) return null;
 
   try {
@@ -143,7 +158,21 @@ export async function getLesson(courseSlug: string, number: string): Promise<Les
       .maybeSingle()
       .then(({ data, error }) => (error || !data ? null : data));
 
-    const data = await Promise.race([queryPromise, timeoutPromise]);
+    const data = (await Promise.race([queryPromise, timeoutPromise])) as {
+      id: string;
+      number: string;
+      position: number;
+      title: string;
+      intro: string;
+      video_url: string | null;
+      video_duration_min: number;
+      homework_title: string;
+      homework_body: string;
+      homework_pdf_url: string | null;
+      is_published: boolean;
+      quiz_questions?: unknown[];
+      practice_tasks?: unknown[];
+    } | null;
     if (!data) return null;
 
     return {
