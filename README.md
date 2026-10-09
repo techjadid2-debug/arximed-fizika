@@ -33,9 +33,9 @@
 ## Loyiha Hujjatlari
 
 Batafsil ma’lumotlar `docs/` papkasidagi quyidagi hujjatlarda jamlangan:
-* **[docs/ILK_QADAM_KURSI.md](file:///Users/abdulvosit/Desktop/Arximed.uz/docs/ILK_QADAM_KURSI.md)** — Maktab o‘quvchilariga fizika o‘rgatish metodikasi va 1-chorakning to‘liq darslik qo‘llanmasi.
-* **[docs/PROJECT_ARCHITECTURE.md](file:///Users/abdulvosit/Desktop/Arximed.uz/docs/PROJECT_ARCHITECTURE.md)** — Loyihaning texnik arxitekturasi, ma’lumotlar oqimi va komponentlar tuzilishi.
-* **[docs/ADMIN.md](file:///Users/abdulvosit/Desktop/Arximed.uz/docs/ADMIN.md)** — Supabase ma’lumotlar bazasi, RLS qoidalari va admin panel orqali boshqarish.
+* **[docs/ILK_QADAM_KURSI.md](docs/ILK_QADAM_KURSI.md)** — Maktab o‘quvchilariga fizika o‘rgatish metodikasi va 1-chorakning to‘liq darslik qo‘llanmasi.
+* **[docs/PROJECT_ARCHITECTURE.md](docs/PROJECT_ARCHITECTURE.md)** — Loyihaning texnik arxitekturasi, ma’lumotlar oqimi va komponentlar tuzilishi.
+* **[docs/ADMIN.md](docs/ADMIN.md)** — Supabase ma’lumotlar bazasi, RLS qoidalari va admin panel orqali boshqarish.
 
 ---
 
